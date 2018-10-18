@@ -1,3 +1,4 @@
+env= Rails.env
 keys = %w{ SECRET_KEY_BASE }
 unless env.development? or env.test?
   keys += %w{ DB_DATABASE DB_PASSWORD DB_USERNAME }
