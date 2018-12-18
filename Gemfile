@@ -11,7 +11,7 @@ gem 'decidim-consultations', DECIDIM_VERSION
 # gem 'decidim', git: "git@github.com:decidim/decidim.git", branch: "0.15-stable"
 # gem 'decidim-initiatives', git: "git@github.com:decidim/decidim.git", branch: "0.15-stable"
 # gem 'decidim-consultations', git: "git@github.com:decidim/decidim.git", branch: "0.15-stable"
-gem 'decidim-file_authorization_handler', git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git", branch: "fix/ensure_all_data_properly_encoded"
+gem 'decidim-file_authorization_handler', git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git", branch: "upgrade/decidim-0.15"
 
 gem 'delayed_job_active_record'
 gem 'daemons'
