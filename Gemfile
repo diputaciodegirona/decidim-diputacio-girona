@@ -11,7 +11,7 @@ gem 'decidim-consultations', DECIDIM_VERSION
 # gem 'decidim', git: "git@github.com:decidim/decidim.git", branch: "0.15-stable"
 # gem 'decidim-initiatives', git: "git@github.com:decidim/decidim.git", branch: "0.15-stable"
 # gem 'decidim-consultations', git: "git@github.com:decidim/decidim.git", branch: "0.15-stable"
-gem 'decidim-file_authorization_handler', git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git", branch: "upgrade/decidim-0.15"
+gem 'decidim-file_authorization_handler', git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git", ref: "41de957cc4b5c2eab8b8f606b417ecef09e3d1b8"
 ## Start force versions Gem
 gem 'graphiql-rails', '1.4.11'
 gem 'graphql', '1.8.10'
