@@ -19,6 +19,7 @@ gem 'graphql', '1.8.10'
 
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem "whenever"
 
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 4.0.0'
