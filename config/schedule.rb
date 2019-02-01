@@ -1,3 +1,9 @@
-every 1.day, at: '2:00 am' do # 1.minute 1.day 1.week 1.month 1.year is also supported
+env :PATH, ENV['PATH']
+
+every :sunday, at: '4:00 am' do
+  rake "decidim:delete_data_portability_files"
+end
+
+every 1.day, at: '2:00 am' do
   rake "decidim:metrics:all"
 end
