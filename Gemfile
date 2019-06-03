@@ -2,13 +2,15 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION= '~> 0.16.1'
+DECIDIM_VERSION= '~> 0.17.0'
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
 gem 'decidim-file_authorization_handler', git: "https://github.com/MarsBased/decidim-file_authorization_handler.git"
 
+# Needed to fix: NameError: uninitialized constant WickedPdf
+gem 'wicked_pdf'
 
 gem 'delayed_job_active_record'
 gem 'daemons'
