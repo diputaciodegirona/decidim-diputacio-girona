@@ -27,3 +27,5 @@ public/uploads
 /config/deploy.rb
 /config/deploy/*
 /Capfile
+
+.rspec-failures
