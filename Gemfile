@@ -23,7 +23,7 @@ gem 'figaro', '>= 1.1.1'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
-  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+  gem 'faker'
 end
 
 group :development do
@@ -36,3 +36,4 @@ group :development do
   gem 'better_errors', '>= 2.3.0'
   gem 'binding_of_caller'
 end
+
