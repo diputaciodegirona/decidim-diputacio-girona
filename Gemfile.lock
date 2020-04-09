@@ -92,7 +92,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.4)
     byebug (11.1.1)
-    capistrano (3.13.0)
+    capistrano (3.11.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -811,7 +811,7 @@ DEPENDENCIES
   better_errors (>= 2.3.0)
   binding_of_caller
   byebug
-  capistrano
+  capistrano (= 3.11.0)
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
