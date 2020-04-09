@@ -11,6 +11,7 @@ default: &default
 development:
   <<: *default
   min_messages: notice
+  database: "decidim_diputacio_girona_development"
 
 test:
   <<: *default
