@@ -13,6 +13,7 @@ rackup      DefaultRackup
 port        ENV['PORT']     || 3010
 env= ENV['RACK_ENV'] || ENV['RAILS_ENV'] || :staging || :production
 environment env
+env = env.to_sym
 daemonize [:production, :staging, :integration].include?(env)
 
 on_worker_boot do
