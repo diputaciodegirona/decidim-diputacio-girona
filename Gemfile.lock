@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/CodiTramuntana/decidim-verify_wo_registration.git
+  revision: 2f5129c2581a3773559af9b8caebda5b3f9ef594
+  specs:
+    decidim-verify_wo_registration (0.0.1)
+      decidim-budgets (>= 0.20)
+      decidim-core (>= 0.20)
+      decidim-proposals (>= 0.20)
+
+GIT
   remote: https://github.com/MarsBased/decidim-file_authorization_handler.git
   revision: f01aaa7fcc9518228f7f079ca06c58aada8230c2
   specs:
@@ -823,6 +832,7 @@ DEPENDENCIES
   decidim-dev (~> 0.20.0)
   decidim-file_authorization_handler!
   decidim-initiatives (~> 0.20.0)
+  decidim-verify_wo_registration!
   delayed_job_active_record
   faker (~> 1.9)
   figaro (>= 1.1.1)
