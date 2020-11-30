@@ -5,8 +5,8 @@ require 'rails_helper'
 describe 'Visit the home page', type: :system, perform_enqueued: true do
   before do
     organization = create :organization
-    create :content_block, organization: organization, scope: :homepage, manifest_name: :hero
-    create :content_block, organization: organization, scope: :homepage, manifest_name: :sub_hero
+    create :content_block, organization: organization, manifest_name: :hero
+    create :content_block, organization: organization, manifest_name: :sub_hero
 
     switch_to_host(organization.host)
   end
