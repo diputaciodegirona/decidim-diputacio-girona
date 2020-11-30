@@ -11,8 +11,14 @@ The app is deployed with [Capistrano](http://capistranorb.com/) using [Figaro](h
    1. `Capfile`
    1. `config/deploy.rb`
    1. `config/deploy/production.rb`
-
+1. Make sure the ruby version  is the same that we have in the `config/deploy/production.rb`.
 1. Deploy the app with `bundle exec cap production deploy`
+
+After the deployment is finished it can take a few minutes to all services to restart.
+In case you still get a 503 you can check if puma is running, in case it's not, you can restart it:
+
+`bundle exec cap production puma:restart`
+
 
 ## Setting up the application
 
