@@ -24,9 +24,7 @@ public/uploads
 /config/application.yml
 /RailsApplication1/nbproject/private/
 # Ignore deploy secrets
-/config/deploy.rb
-/config/deploy/*
-/Capfile
+/config/deploy/production.rb
 
 .rspec-failures
 
