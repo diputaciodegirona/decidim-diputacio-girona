@@ -23,7 +23,7 @@ gem 'puma', '~> 4.3'
 gem 'uglifier', '>= 4.0.0'
 gem 'figaro', '>= 1.1.1'
 
-group :development, :test do
+group :development, :test, :staging do
   gem 'byebug', platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
   gem 'faker', "~> 1.9"
