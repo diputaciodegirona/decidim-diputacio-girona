@@ -8,12 +8,12 @@ GIT
       decidim-proposals (>= 0.20)
 
 GIT
-  remote: https://github.com/MarsBased/decidim-file_authorization_handler.git
-  revision: 9be038e8403254daf6b1fb7f7f3c94b862ad4153
+  remote: https://github.com/diputaciodegirona/decidim-file_authorization_handler.git
+  revision: 56df34b327e7789bcad70f6652f41fa48e751643
   specs:
-    decidim-file_authorization_handler (0.15.0)
-      decidim (>= 0.15.0)
-      decidim-admin (>= 0.15.0)
+    decidim-file_authorization_handler (0.24.0)
+      decidim (>= 0.24.0)
+      decidim-admin (>= 0.24.0)
       rails (>= 5.2)
 
 GEM
@@ -691,7 +691,7 @@ GEM
       activerecord (= 5.2.6)
       activestorage (= 5.2.6)
       activesupport (= 5.2.6)
-      bundler (>= 2.2.17)
+      bundler (>= 1.3.0)
       railties (= 5.2.6)
       sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.5)
