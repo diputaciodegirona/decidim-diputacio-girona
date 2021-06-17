@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "~> 0.23.0"
+DECIDIM_VERSION = "~> 0.24.0"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
@@ -45,5 +45,7 @@ group :development do
   gem "capistrano-rbenv", require: false
   gem "capistrano3-puma", require: false
   gem "capistrano3-delayed-job", require: false
+  gem "ed25519", require: false
+  gem "bcrypt_pbkdf", require: false
 end
 
