@@ -19,7 +19,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem "whenever", require: false
 
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.6'
 gem 'uglifier', '>= 4.0.0'
 gem 'figaro', '>= 1.1.1'
 
