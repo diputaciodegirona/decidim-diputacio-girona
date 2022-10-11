@@ -2,9 +2,9 @@
 lock "3.11.0"
 
 set :application, "decidim-diputacio-girona"
-set :repo_url, "git@github.com:diputaciodegirona/decidim-diputacio-girona.git"
+set :repo_url, "https://github.com/diputaciodegirona/decidim-diputacio-girona.git"
 
-set :scm_username, "ddgi-desenvolupament"
+set :git_http_username, "ddgi-desenvolupament"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
