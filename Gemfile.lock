@@ -890,6 +890,7 @@ DEPENDENCIES
   puma-daemon
   spring
   spring-watcher-listen (~> 2.0.0)
+  sprockets (~> 3.7.2)
   uglifier (>= 4.0.0)
   web-console
   whenever
