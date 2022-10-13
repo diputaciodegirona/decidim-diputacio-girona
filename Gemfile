@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "~> 0.25.2"
+DECIDIM_VERSION = "~> 0.23.0"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
@@ -19,8 +19,8 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem "whenever", require: false
 
-gem 'puma-daemon', require: false
-gem 'puma', '~> 5.0'
+#gem 'puma-daemon', require: false
+gem 'puma', '~> 4.3'
 gem 'uglifier', '>= 4.0.0'
 gem 'figaro', '>= 1.1.1'
 
