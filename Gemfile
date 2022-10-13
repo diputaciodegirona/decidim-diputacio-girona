@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "~> 0.25.0"
+DECIDIM_VERSION = "~> 0.25.2"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
@@ -25,7 +25,7 @@ gem 'uglifier', '>= 4.0.0'
 gem 'figaro', '>= 1.1.1'
 
 #Per a arreglar error de sprockets: https://github.com/decidim/decidim/issues/5410
-gem "sprockets", "~> 3.7.2"
+#gem "sprockets", "~> 3.7.2"
 
 group :development, :test, :staging do
   gem 'byebug', platform: :mri

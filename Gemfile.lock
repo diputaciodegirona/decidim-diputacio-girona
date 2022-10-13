@@ -873,11 +873,11 @@ DEPENDENCIES
   capistrano3-delayed-job
   capistrano3-puma
   daemons
-  decidim (~> 0.25.0)
-  decidim-consultations (~> 0.25.0)
-  decidim-dev (~> 0.25.0)
+  decidim (~> 0.25.2)
+  decidim-consultations (~> 0.25.2)
+  decidim-dev (~> 0.25.2)
   decidim-file_authorization_handler!
-  decidim-initiatives (~> 0.25.0)
+  decidim-initiatives (~> 0.25.2)
   decidim-verify_wo_registration!
   delayed_job_active_record
   ed25519
@@ -890,7 +890,6 @@ DEPENDENCIES
   puma-daemon
   spring
   spring-watcher-listen (~> 2.0.0)
-  sprockets (~> 3.7.2)
   uglifier (>= 4.0.0)
   web-console
   whenever
