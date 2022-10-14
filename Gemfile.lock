@@ -870,11 +870,11 @@ DEPENDENCIES
   capistrano3-delayed-job
   capistrano3-puma
   daemons
-  decidim (~> 0.24)
-  decidim-consultations (~> 0.24)
-  decidim-dev (~> 0.24)
+  decidim (~> 0.25.2)
+  decidim-consultations (~> 0.25.2)
+  decidim-dev (~> 0.25.2)
   decidim-file_authorization_handler!
-  decidim-initiatives (~> 0.24)
+  decidim-initiatives (~> 0.25.2)
   decidim-verify_wo_registration!
   delayed_job_active_record
   ed25519
