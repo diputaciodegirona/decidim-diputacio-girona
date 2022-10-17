@@ -28,6 +28,8 @@ append :linked_files, "config/application.yml", "config/puma.rb"
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/uploads"
 
+append :shared_paths, "storage", "tmp/webpacker-cache", "node_modules", "public/decidim-packs"
+
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
@@ -41,3 +43,16 @@ set :use_sudo, false
 
 # Before / After Hooks
 after "deploy:restart", "deploy:cleanup" # clean old releases
+
+namespace :deploy do
+  desc "Decidim webpacker configuration"
+  task :decidim_webpacker_install do
+    on roles(:all) do
+      within release_path do
+        execute :npm, "install"
+      end
+    end
+  end
+
+  before "deploy:assets:precompile", "deploy:decidim_webpacker_install"
+end
