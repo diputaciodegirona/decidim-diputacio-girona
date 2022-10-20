@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/CodiTramuntana/decidim-file_authorization_handler.git
+  revision: 78f995f761f0d5989b6383ee2deb2574650190b7
+  tag: v0.25.2.2
+  specs:
+    decidim-file_authorization_handler (0.25.2.2)
+      decidim (~> 0.25.2)
+      decidim-admin (~> 0.25.2)
+      rails (>= 5.2)
+
+GIT
   remote: https://github.com/CodiTramuntana/decidim-verify_wo_registration.git
   revision: b372e31b1cf03ab030c13aca570e9120390f02c8
   specs:
@@ -6,15 +16,6 @@ GIT
       decidim-budgets (>= 0.20)
       decidim-core (>= 0.20)
       decidim-proposals (>= 0.20)
-
-GIT
-  remote: https://github.com/diputaciodegirona/decidim-file_authorization_handler.git
-  revision: 56df34b327e7789bcad70f6652f41fa48e751643
-  specs:
-    decidim-file_authorization_handler (0.24.0)
-      decidim (>= 0.24.0)
-      decidim-admin (>= 0.24.0)
-      rails (>= 5.2)
 
 GEM
   remote: https://rubygems.org/
@@ -557,7 +558,7 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.8)
     nobspw (0.6.2)
-    nokogiri (1.13.8)
+    nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth (1.1.0)
@@ -873,7 +874,7 @@ DEPENDENCIES
   decidim (~> 0.25.2)
   decidim-consultations (~> 0.25.2)
   decidim-dev (~> 0.25.2)
-  decidim-file_authorization_handler!
+  decidim-file_authorization_handler (~> 0.25.0)!
   decidim-initiatives (~> 0.25.2)
   decidim-verify_wo_registration!
   delayed_job_active_record
