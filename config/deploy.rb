@@ -26,9 +26,7 @@ set :git_http_username, "ddgi-desenvolupament"
 append :linked_files, "config/application.yml", "config/puma.rb"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/uploads"
-
-append :shared_paths, "storage", "tmp/webpacker-cache", "node_modules", "public/decidim-packs"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/uploads", "storage", "tmp/webpacker-cache", "node_modules", "public/decidim-packs"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
