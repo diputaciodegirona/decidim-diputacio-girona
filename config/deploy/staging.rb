@@ -18,4 +18,4 @@ set :keep_releases, 2
 # set :puma_bind, "unix://#{shared_path}/tmp/sockets/puma.sock"
 set :puma_conf, "#{shared_path}/config/puma.rb"
 
-after "deploy:updated", "decploy:cleanup"
+after "deploy:updated", "deploy:cleanup"
