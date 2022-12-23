@@ -8,12 +8,15 @@ CarrierWave.configure do |config|
   config.storage = :file
   config.enable_processing = !Rails.env.test?
   config.asset_host = proc do |file|
-    host = if file.model.class.name == "Decidim::Organization"
-             file.model.host
-           else
-             file.model.organization.host
-           end
-    
+#    host = if file.model.class.name == "Decidim::Organization"
+#             file.model.host
+#           elsif file.model.nil?
+#	     "diputacio-decidim.ddgi.cat"
+#	   else
+#	     Rails.logger.info "CLASSES= #{file.class.name} / #{file.model.class.name}"
+#             file.model.organization.host
+#           end
+      host = "diputacio-decidim.ddgi.cat"     
     "https://#{host}"
   end
 end
