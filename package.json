@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@decidim/browserslist-config": "^0.25.2",
-    "@decidim/core": "^0.25.2",
+    "@decidim/core": "^0.27.2",
     "@decidim/elections": "^0.25.2",
     "@decidim/webpacker": "^0.25.2",
     "graphql-ws": "^5.11.2",
