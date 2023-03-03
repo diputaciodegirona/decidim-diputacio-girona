@@ -1,0 +1,2 @@
+require 'puma/daemon'
+#daemonize

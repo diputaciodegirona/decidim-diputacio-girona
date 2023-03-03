@@ -1,5 +1,29 @@
 {
-  "name": "decidim_oliver_int_app",
+  "name": "app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@decidim/browserslist-config": "^0.25.2",
+    "@decidim/core": "^0.25.2",
+    "@decidim/elections": "^0.25.2",
+    "@decidim/webpacker": "^0.25.2",
+    "graphql-ws": "^5.11.2",
+    "n": "^9.0.1"
+  },
+  "version": "0.1.0",
+  "engines": {
+    "node": "16.9.1"
+  },
+  "babel": {
+    "presets": [
+      "./node_modules/@rails/webpacker/package/babel/preset.js"
+    ]
+  },
+  "browserslist": [
+    "extends @decidim/browserslist-config"
+  ],
+  "devDependencies": {
+    "@decidim/dev": "^0.25.2",
+    "@decidim/eslint-config": "^0.25.2",
+    "@decidim/stylelint-config": "^0.25.2"
+  }
 }

@@ -2,12 +2,13 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "~> 0.24.0"
+DECIDIM_VERSION = "~> 0.25.2"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
-gem 'decidim-file_authorization_handler', git: "https://github.com/diputaciodegirona/decidim-file_authorization_handler.git"
+#gem 'decidim-file_authorization_handler', git: "https://github.com/diputaciodegirona/decidim-file_authorization_handler.git"
+gem 'decidim-file_authorization_handler', '~>0.25.0', tag: "v0.25.2.2", git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git"
 gem 'decidim-verify_wo_registration', git: "https://github.com/CodiTramuntana/decidim-verify_wo_registration.git"
 
 gem "geocoder", "~> 1.6.1"
@@ -19,9 +20,11 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem "whenever", require: false
 
+gem 'puma-daemon', require: false
 gem 'puma', '~> 5.0'
 gem 'uglifier', '>= 4.0.0'
 gem 'figaro', '>= 1.1.1'
+
 
 group :development, :test, :staging do
   gem 'byebug', platform: :mri
@@ -34,7 +37,6 @@ group :development do
   gem 'listen', '~> 3.1.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'letter_opener_web', '~> 1.3.0'
 
   gem 'better_errors', '>= 2.3.0'
   gem 'binding_of_caller'
