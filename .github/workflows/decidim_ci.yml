@@ -3,6 +3,7 @@ on: [push]
 
 env:
   RUBY_VERSION: 2.7.5
+  NODE_VERSION: 16.9.1
 
 jobs:
   tests:
@@ -33,18 +34,38 @@ jobs:
       - uses: ruby/setup-ruby@master
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Recover dependency cache
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      - run: npm install
+
+      - name: Recover Ruby dependency cache
         uses: actions/cache@v1
         with:
           path: ./vendor/bundle
-          key: ${{ runner.OS }}-deps-${{ hashFiles('Gemfile.lock') }}
+          key: ${{ runner.OS }}-app-rubydeps-${{ hashFiles('Gemfile.lock') }}
           restore-keys: |
-            ${{ runner.OS }}-deps-${{ env.cache-name }}-
-            ${{ runner.OS }}-deps-
-            ${{ runner.OS }}-
-      - run: bundle install --path vendor/bundle --jobs 4 --retry 3
-        name: Bundle install
-      - run: bundle exec rake db:test:prepare
-        name: Setup database
-      - run: bundle exec rspec
-        name: Run RSpec
+            ${{ runner.OS }}-app-rubydeps-${{ env.cache-name }}-
+            ${{ runner.OS }}-app-rubydeps-
+
+      - name: Install Ruby deps
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_on: error
+          command: bundle install --jobs 4 --retry 3
+
+      - name: Generate test_app
+        run: |
+          RAILS_ENV=test bundle exec rails db:create
+          RAILS_ENV=test bundle exec rails db:migrate
+
+      - name: Run RSpec
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_on: error
+          command: CI=1 RAILS_ENV=test bundle exec rspec --backtrace
