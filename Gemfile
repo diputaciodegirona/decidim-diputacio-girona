@@ -28,7 +28,7 @@ gem 'figaro', '>= 1.1.1'
 group :development, :test, :staging do
   gem 'byebug', platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
-  gem 'faker', "~> 1.9"
+  gem 'faker'
 end
 
 group :development do

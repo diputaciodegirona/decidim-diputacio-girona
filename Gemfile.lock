@@ -874,7 +874,7 @@ DEPENDENCIES
   decidim-verify_wo_registration!
   delayed_job_active_record
   ed25519
-  faker (~> 1.9)
+  faker
   figaro (>= 1.1.1)
   geocoder (~> 1.6.1)
   listen (~> 3.1.0)
