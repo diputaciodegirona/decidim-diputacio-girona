@@ -37,3 +37,5 @@ public/uploads
 yarn-debug.log*
 .yarn-integrity
 public/decidim-packs
+
+storage/

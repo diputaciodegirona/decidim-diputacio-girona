@@ -38,3 +38,16 @@ user.save!
 6. Fill the rest of the form and submit it.
 
 You're good to go!
+
+## Testing
+
+Require missing factories in `spec/factories.rb`
+
+Add `require "rails_helper"` to your specs and execute them from the root directory, i.e.:
+
+```bash
+npm install
+bundle install --jobs 4
+RAILS_ENV=test bundle exec rails db:create db:migrate
+bundle exec rspec --backtrace
+```

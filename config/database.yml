@@ -17,7 +17,7 @@ test:
   <<: *default
   pool: <%= ENV.fetch('DB_POOL') { 5 } %>
   host: <%= ENV.fetch('DB_HOST') { "localhost" } %>
-  database: "decidim_diputacio_girona_custom_test"
+  database: "decidim_diputacio_girona_test"
   username: <%= ENV.fetch('DB_USERNAME') { "" } %>
   password: <%= ENV.fetch('DB_PASSWORD') { "" } %>
   port: <%= ENV.fetch('DB_PORT') { 5432 } %>

@@ -12,7 +12,7 @@ describe 'Visit the home page', type: :system, perform_enqueued: true do
   end
 
   it 'renders the home page' do
-    visit decidim.root_path
+    visit decidim.root_path(locale: :en)
     expect(page).to have_content('Welcome')
   end
 end

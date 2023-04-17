@@ -5,7 +5,7 @@ server 'SERVER', user: 'USER', port: '22', roles:  %w{app web db}
 set :deploy_to, "PATH/TO/DEPLOY" # directory for the project in the server, in this case 'var/www/customers'
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.6.6'
+set :rbenv_ruby, '2.7.5'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 set :rbenv_roles, :all # default value

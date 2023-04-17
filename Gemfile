@@ -25,11 +25,11 @@ gem 'puma', '~> 5.0'
 gem 'uglifier', '>= 4.0.0'
 gem 'figaro', '>= 1.1.1'
 
-
 group :development, :test, :staging do
   gem 'byebug', platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
-  gem 'faker', "~> 1.9"
+  gem 'faker'
+  gem 'bootsnap'
 end
 
 group :development do
