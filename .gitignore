@@ -13,8 +13,8 @@
 !/log/.keep
 !/tmp/.keep
 
-/node_modules
 /yarn-error.log
+/node_modules/
 
 .byebug_history
 
@@ -30,12 +30,20 @@ public/uploads
 
 *.sql
 
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-public/decidim-packs
+spec/decidim_dummy_app/
+spec/development_app
+spec/test_app
 
+/public/packs/
+/public/packs-test/
+/public/decidim-packs/
+/public/sw.js
+/public/sw.js.map
+
+node_modules/
 storage/
+
+.yarn-integrity
+yarn-debug.log*
+
+/config/master.key
