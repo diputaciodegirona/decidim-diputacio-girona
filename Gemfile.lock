@@ -868,11 +868,11 @@ DEPENDENCIES
   ed25519
   faker
   figaro (>= 1.1.1)
-  geocoder (= 1.7.5)
+  geocoder
   listen (~> 3.1.0)
   puma (~> 5.0)
   puma-daemon
-  rails (= 6.0.6)
+  rails
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier (>= 4.0.0)
