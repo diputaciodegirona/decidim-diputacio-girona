@@ -13,9 +13,6 @@
 !/log/.keep
 !/tmp/.keep
 
-/yarn-error.log
-/node_modules/
-
 .byebug_history
 
 # Ignore public uploads
@@ -45,5 +42,6 @@ storage/
 
 .yarn-integrity
 yarn-debug.log*
+/yarn-error.log
 
 /config/master.key
