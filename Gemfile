@@ -11,7 +11,6 @@ gem 'decidim-file_authorization_handler', tag: "v0.26.2.7", git: "https://github
 gem 'decidim-verify_wo_registration', git: "https://github.com/CodiTramuntana/decidim-verify_wo_registration.git"
 
 gem "geocoder"
-gem "rails"
 
 # Needed to fix: NameError: uninitialized constant WickedPdf
 gem 'wicked_pdf'
