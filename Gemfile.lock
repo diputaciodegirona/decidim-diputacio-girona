@@ -301,7 +301,7 @@ GEM
     browser (2.7.1)
     builder (3.2.4)
     byebug (11.1.3)
-    capistrano (3.11.0)
+    capistrano (3.17.3)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -875,7 +875,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   byebug
-  capistrano (= 3.11.0)
+  capistrano (~> 3.17)
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
