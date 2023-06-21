@@ -1,5 +1,5 @@
 set :stage, 'staging'
-set :branch, '202210-update-0.25'
+set :branch, 'pr64-2'
 
 set :git_http_password, " 2GThJ7dJgSNnyQBr"
 
