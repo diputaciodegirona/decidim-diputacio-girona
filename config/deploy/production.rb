@@ -1,5 +1,5 @@
 set :stage, 'production'
-set :branch, '202210-update-0.25'
+set :branch, 'master'
 
 set :git_http_password, "PASSWORD"
 
