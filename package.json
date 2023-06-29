@@ -6,6 +6,7 @@
     "@decidim/core": "file:packages/core",
     "@decidim/elections": "file:packages/elections",
     "@decidim/webpacker": "file:packages/webpacker",
+    "@rails/webpacker": "^6.0.0-rc.6",
     "graphql-ws": "^5.11.2",
     "n": "^9.0.1"
   },
