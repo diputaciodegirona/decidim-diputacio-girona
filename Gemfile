@@ -7,7 +7,7 @@ DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
-gem 'decidim-file_authorization_handler', tag: "v0.27.1.3", git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git"
+gem 'decidim-file_authorization_handler', tag: "v0.27.1.4", git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git"
 gem 'decidim-verify_wo_registration', '0.1.0'
 
 gem "geocoder"
