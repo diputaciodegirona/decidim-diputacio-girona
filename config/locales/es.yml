@@ -1,11 +1,12 @@
+---
 es:
   activemodel:
     attributes:
       assembly:
-        parent_id: Consejo principal
         assembly_type: Tipo de consejo
         assembly_type_other: Otro tipo de consejo
         decidim_assemblies_type_id: Tipo de consejo
+        parent_id: Consejo principal
   activerecord:
     models:
       decidim/assembly:
@@ -17,7 +18,6 @@ es:
       decidim/assembly_user_role:
         one: Rol de administración del consejo
         other: Rol de administradores del consejo
-
   decidim:
     admin:
       actions:
@@ -146,7 +146,7 @@ es:
         assembly_imports:
           form:
             slug_help: 'Los nombres cortos de URL de utilizan para generar la URL que apunten a este consejo. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
-        assembly_members:
+        assembly_members: 
       content_blocks:
         highlighted_assemblies:
           name: Consejos destacados
@@ -168,9 +168,8 @@ es:
     authorization_modals:
       content:
         missing:
-          title: Se requiere autentificación
           explanation: Para realizar esta acción, deberás introducir tu DNI y tu fecha de nacimiento.
-          
+          title: Se requiere autentificación
     events:
       assemblies:
         create_assembly_member:
@@ -188,7 +187,7 @@ es:
         assemblies:
           contextual: "<p>Un <strong>consejo</strong> es un grupo formado por miembros de una organización que se reúnen periódicamente para tomar decisiones sobre un ámbito o area específica del mismo.</p> <p>Los consejos realizan encuentros, algunos son privados y otros son abiertos. Si son abiertos se puede participar en ellos (por ejemplo: asistiendo si el aforo lo permite, añadiendo puntos el orden del día, o comentando las propuestas y decisiones tomadas por este órgano).</p> <p>Ejemplos: Un consejo general (que se reúne una vez al año para definir las lineas principales de acción de la organización así como a sus órganos ejecutivos por votación), un consejo asesor de igualdad (que se reúne cada dos meses para hacer propuestas de cómo mejorar las relaciones de género en la organización), una comissión de evaluación (que se reúne cada mes para hacer el seguimiento de un proceso) o un órgano de garantías (que recoge las incidencias, abusos o propuestas de mejora de los procedimientos de toma de decisiones) son todo ejemplos de consejos.</p>\n"
           page: "<p>Un <strong>consejo</strong> es un grupo formado por miembros de una organización que se reúnen periódicamente para tomar decisiones sobre un ámbito o area específica del mismo.</p> <p>Los consejos realizan encuentros, algunos son privados y otros son abiertos. Si son abiertos se puede participar en ellos (por ejemplo: asistiendo si el aforo lo permite, añadiendo puntos el orden del día, o comentando las propuestas y decisiones tomadas por este órgano).</p> <p>Ejemplos: Un consejo general (que se reúne una vez al año para definir las lineas principales de acción de la organización así como a sus órganos ejecutivos por votación), un consejo asesor de igualdad (que se reúne cada dos meses para hacer propuestas de cómo mejorar las relaciones de género en la organización), una comissión de evaluación (que se reúne cada mes para hacer el seguimiento de un proceso) o un órgano de garantías (que recoge las incidencias, abusos o propuestas de mejora de los procedimientos de toma de decisiones) son todo ejemplos de consejos.</p>\n"
-          title: ¿Qué son los consejos?
+          title: "¿Qué son los consejos?"
     initiatives:
       initiatives:
         index_header:
@@ -224,4 +223,3 @@ es:
             other: "%{count} consejos"
       assembly_navigation:
         assembly_menu_item: El consejo
-

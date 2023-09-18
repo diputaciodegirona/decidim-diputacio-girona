@@ -1,11 +1,12 @@
+---
 ca:
   activemodel:
     attributes:
       assembly:
-        parent_id: Consell principal
         assembly_type: Tipus de consell
         assembly_type_other: Altre tipus de consell
         decidim_assemblies_type_id: Tipus de consell
+        parent_id: Consell principal
   activerecord:
     models:
       decidim/assembly:
@@ -17,7 +18,6 @@ ca:
       decidim/assembly_user_role:
         one: Rol d'administració del consell
         other: Rol d'administradores del consell
-
   decidim:
     admin:
       actions:
@@ -146,7 +146,7 @@ ca:
         assembly_imports:
           form:
             slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest consell. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
-        assembly_members:
+        assembly_members: 
       content_blocks:
         highlighted_assemblies:
           name: Consells destacats
@@ -168,8 +168,8 @@ ca:
     authorization_modals:
       content:
         missing:
-          title: Es requereix autentificació
           explanation: Per dur a terme aquesta acció, has d'introduir el teu DNI i la teva data de naixement.
+          title: Es requereix autentificació
     events:
       assemblies:
         create_assembly_member:
@@ -223,4 +223,3 @@ ca:
             other: "%{count} consells"
       assembly_navigation:
         assembly_menu_item: El consell
-
