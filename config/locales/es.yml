@@ -71,7 +71,7 @@ es:
         update:
           error: Se ha producido un error en actualizar el miembro de este consejo.
           success: Miembro actualizado correctamente para este consejo.
-      assembly_publicadoions:
+      assembly_publications:
         create:
           error: Se ha producido un error en publicar este consejo.
           success: Consejo publicado correctamente.
@@ -146,7 +146,6 @@ es:
         assembly_imports:
           form:
             slug_help: 'Los nombres cortos de URL de utilizan para generar la URL que apunten a este consejo. Sólo acepta letras, números y guiones, y debe comenzar con una letra. Ejemplo: %{url}'
-        assembly_members: 
       content_blocks:
         highlighted_assemblies:
           name: Consejos destacados

@@ -146,7 +146,6 @@ ca:
         assembly_imports:
           form:
             slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest consell. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
-        assembly_members: 
       content_blocks:
         highlighted_assemblies:
           name: Consells destacats
