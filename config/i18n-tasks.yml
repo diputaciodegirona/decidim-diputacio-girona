@@ -97,7 +97,28 @@ search:
 # - '{devise,simple_form}.*'
 
 ## Consider these keys used:
-# ignore_unused:
+  ignore_unused:
+    - 'layouts.decidim.assemblies.*'
+    - 'activemodel.attributes.assembly.*'
+    - 'activerecord.models.decidim/assembly*'
+    - 'decidim.admin.actions.new_assembly*'
+    - 'decidim.admin.assemblies.*'
+    - 'decidim.admin.assembly_*'
+    - 'decidim.admin.menu.assemblies*'
+    - 'decidim.admin.models.assembly*'
+    - 'decidim.admin.titles.assemblies*'
+    - 'decidim.admin_log.assembly*'
+    - 'decidim.assemblies*'
+    - 'decidim.authorization_modals.content.missing*'
+    - 'decidim.events.assembl*'
+    - 'decidim.help.participatory_spaces.assemblies*'
+    - 'decidim.initiatives.initiatives.index_header.not_authorized.title'
+    - 'decidim.log.value_types.assembly*'
+    - 'decidim.menu.assemblies'
+    - 'decidim.metrics.assemblies*'
+    - 'decidim.participatory_processes.show.related_assemblies'
+    - '*assembl*'
+
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
