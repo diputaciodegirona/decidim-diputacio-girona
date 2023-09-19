@@ -1,31 +1,225 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
+---
 en:
+  activemodel:
+    attributes:
+      assembly:
+        assembly_type: Tipus de consell
+        assembly_type_other: Altre tipus de consell
+        decidim_assemblies_type_id: Tipus de consell
+        parent_id: Consell principal
+  activerecord:
+    models:
+      decidim/assembly:
+        one: Consell
+        other: Consells
+      decidim/assembly_member:
+        one: Membre del consell
+        other: Membres del consell
+      decidim/assembly_user_role:
+        one: Rol d'administració del consell
+        other: Rol d'administradores del consell
+  decidim:
+    admin:
+      actions:
+        new_assembly: Nou consell
+        new_assembly_type: Nou tipus de consell
+      assemblies:
+        create:
+          error: S'ha produït un error en crear un nou consell
+          success: Consell creat correctament
+        new:
+          title: Nou consell
+        update:
+          error: S'ha produït un error en actualitzar aquest consell.
+          success: El consell s'ha actualitzat correctament.
+      assemblies_copies:
+        create:
+          error: S'ha produït un error en duplicar aquest consell.
+          success: El consell s'ha duplicat correctament.
+      assemblies_types:
+        create:
+          error: S'ha produït un error en crear un nou consell.
+          success: Tipus de consell creat correctament.
+        destroy:
+          success: Tipus de consell esborrat amb èxit.
+        new:
+          title: Nou tipus de consell
+        update:
+          error: S'ha produït un error a l'actualitzar el tipus de consell
+          success: Tipus de consell actualitzat amb èxit.
+      assembly_copies:
+        new:
+          title: Consell duplicat
+      assembly_imports:
+        create:
+          error: Hi ha hagut un problema important aquest consell.
+          success: Consell importat amb èxit.
+        new:
+          title: Importar consell
+      assembly_members:
+        create:
+          error: S'ha produït un error en afegir un membre per a aquest consell.
+          success: El membre d'aquest consell s'ha creat correctament.
+        destroy:
+          success: El membre per a aquest consell s'ha eliminat correctament.
+        edit:
+          title: Actualitza el membre del consell.
+        index:
+          assembly_members_title: Membres del consell
+        new:
+          title: Nou membre del consell.
+        update:
+          error: S'ha produït un error en actualitzar el membre d'aquest consell.
+          success: Membre actualitzat correctament per a aquest consell.
+      assembly_publications:
+        create:
+          error: S'ha produït un error en publicar aquest consell.
+          success: Consell publicat correctament.
+        destroy:
+          error: S'ha produït un error en despublicar aquest consell.
+          success: Consell despublicat correctament.
+      assembly_user_roles:
+        create:
+          error: S'ha produït un error en afegir una administradora per a aquest consell.
+          success: L'administradora s'ha afegit correctament a aquest consell.
+        destroy:
+          success: L'administradora s'ha eliminat correctament d'aquest consell.
+        edit:
+          title: Actualitza l'administradora del consell.
+        index:
+          assembly_admins_title: Administradores del consell
+        new:
+          title: Nova administradora del consell.
+        update:
+          error: S'ha produït un error en actualitzar una administradora per a aquest consell.
+          success: L'administradora s'ha actualitzat correctament per a aquest consell.
+      menu:
+        assemblies: Consells
+        assemblies_submenu:
+          assembly_admins: Administradores del consell
+      models:
+        assembly:
+          name: Consell
+        assembly_user_role:
+          name: Administradora del consell
+      titles:
+        assemblies: Consells
+        assemblies_types: Tipus de consells
+    admin_log:
+      assembly:
+        create: "%{user_name} ha creat el consell %{resource_name}"
+        publish: "%{user_name} ha publicat el consell %{resource_name}"
+        unpublish: "%{user_name} ha despublicat el consell %{resource_name}"
+        update: "%{user_name} ha actualitzat el consell %{resource_name}"
+      assembly_member:
+        create: "%{user_name} ha afegit el membre %{resource_name} al consell %{space_name}"
+        delete: "%{user_name} esborrat el membre %{resource_name} del consell %{space_name}"
+        update: "%{user_name} ha actualitzat el membre %{resource_name} del consell %{space_name}"
+      assembly_setting:
+        update: "%{user_name} ha actualitzat la configuració dels consell"
+      assembly_type:
+        create: "%{user_name} ha creat el consell %{resource_name}"
+        delete: "%{user_name} ha eliminat el tipus de consell %{resource_name}"
+        publish: "%{user_name} ha publicat el tipus de consell %{resource_name}"
+        unpublish: "%{user_name} ha despublicat el tipus de consell %{resource_name}"
+        update: "%{user_name} ha actualitzat el tipus de consell %{resource_name}"
+      assembly_user_role:
+        create: "%{user_name} ha convidat %{resource_name} al consell %{space_name}"
+        delete: "%{user_name} ha eliminat la participant %{resource_name} del consell %{space_name}"
+        update: "%{user_name} ha canviat el rol de %{resource_name} al consell %{space_name}"
+    assemblies:
+      admin:
+        assemblies:
+          form:
+            announcement_help: El text que introdueixis aquí es mostrarà a la participant just a sota de la informació del consell.
+            duration_help: Si la durada d'aquest consell és limitada, selecciona la data de finalització. En cas contrari, apareixerà com a indefinida.
+            included_at_help: Selecciona la data en què es va afegir aquest consell a Decidim. No necessàriament ha de ser la mateixa que la data de creació.
+            select_an_assembly_type: Selecciona un tipus de consell
+            select_parent_assembly: Selecciona un consell principal
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest consell. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+        assemblies_settings:
+          form:
+            title: Configuració dels consells
+        assembly_copies:
+          form:
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar els URL que apunten a aquest consell. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+        assembly_imports:
+          form:
+            slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest consell. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
+        assembly_members: 
+      content_blocks:
+        highlighted_assemblies:
+          name: Consells destacats
+      index:
+        title: Consells
+      last_activity:
+        new_assembly: Nou consell
+      pages:
+        home:
+          highlighted_assemblies:
+            active_assemblies: Consells actius
+            assemblies_button_title: Enllaç a la pàgina dde Consells mostrant tots els consells
+            see_all_assemblies: Veure tots els consells
+      show:
+        assembly_type: Tipus de consell
+        children: Consells
+        private_space: Aquest é sun consell privat
+        social_networks_title: Compartir aquest consell a
+    authorization_modals:
+      content:
+        missing:
+          explanation: Per dur a terme aquesta acció, has d'introduir el teu DNI i la teva data de naixement.
+          title: Es requereix autentificació
+    events:
+      assemblies:
+        create_assembly_member:
+          email_intro: Una administradora del consell <a href="%{resource_url}">%{resource_name}</a> t'ha afegit com a un dels seus membres.
+          email_outro: Reps aquesta notificació perquè t'han convidat a un consell. Entra en <a href="%{resource_path}">assembly page</a> per a contribuir-hi!
+          email_subject: T'han convidat a ser membre del consell %{resource_name}!
+          notification_title: T'han registrat com a membre del consell <a href="%{resource_path}">%{resource_name}</a>. Entra a <a href="%{resource_path}">la pàgina del consell</a> per a contribuir-hi!
+      assembly:
+        role_assigned:
+          email_intro: T'han assignat el rol de %{role} al consell "%{resource_title}".
+          email_outro: Reps aquesta notificació perquè se t'ha assignat el rol de %{role} al consell "%{resource_title}".
+          notification_title: Se t'ha assignat el rol de %{role} al consell <a href="%{resource_url}">%{resource_title}</a>.
+    help:
+      participatory_spaces:
+        assemblies:
+          contextual: "<p>Un <strong>consell</strong> és un grup format per membres d'una organització que es reuneixen periòdicament per prendre decisions sobre un àmbit o àrea específica de la mateixa.</p> <p>Els consells realitzen trobades, algunes són privades i altres són obertes. Si són obertes s’hi pot participar (per exemple: assistint si l'aforament ho permet, afegint punts a l'ordre del dia, o comentant les propostes i decisions preses per aquest òrgan).</p> <p>Exemples: Un consell general (que es reuneix un cop l'any per definir les línies principals d'acció de l'organització així com als seus òrgans executius per votació), un consell assessor d'igualtat (que es reuneix cada dos mesos per fer propostes de com millorar les relacions de gènere en l'organització), una comissió d'avaluació (que es reuneix cada mes per fer el seguiment d'un procés) o un òrgan de garanties (que recull les incidències, abusos o propostes de millora dels procediments de presa de decisions) són tot exemples de consells.</p>\n"
+          page: "<p>Un <strong>consell</strong> és un grup format per membres d'una organització que es reuneixen periòdicament per prendre decisions sobre un àmbit o àrea específica de la mateixa.</p> <p>Els consells realitzen trobades, algunes són privades i altres són obertes. Si són obertes s’hi pot participar (per exemple: assistint si l'aforament ho permet, afegint punts a l'ordre del dia, o comentant les propostes i decisions preses per aquest òrgan).</p> <p>Exemples: Un consell general (que es reuneix un cop l'any per definir les línies principals d'acció de l'organització així com als seus òrgans executius per votació), un consell assessor d'igualtat (que es reuneix cada dos mesos per fer propostes de com millorar les relacions de gènere en l'organització), una comissió d'avaluació (que es reuneix cada mes per fer el seguiment d'un procés) o un òrgan de garanties (que recull les incidències, abusos o propostes de millora dels procediments de presa de decisions) són tot exemples de consells.</p>\n"
+          title: Què són els consells?
+    initiatives:
+      initiatives:
+        index_header:
+          not_authorized:
+            title: Es requereix autorització
+    log:
+      value_types:
+        assembly_presenter:
+          not_found: 'El consell no s''ha trobat a la base de dades (ID: %{id})'
+        assembly_type_presenter:
+          not_found: 'El tipus de consell no s''ha trobat a la base de dades (ID: %{id})'
+    menu:
+      assemblies: Consells
+    metrics:
+      assemblies:
+        description: Nombre de consells creats
+        object: consells
+        title: Consells
+    participatory_processes:
+      show:
+        related_assemblies: Consells relacionats
+    statistics:
+      assemblies_count: Consells
+  layouts:
+    decidim:
+      assemblies:
+        index:
+          children: 'Consells: '
+          promoted_assemblies: Consells destacats
+        order_by_assemblies:
+          assemblies:
+            one: "%{count} consell"
+            other: "%{count} consells"
+      assembly_navigation:
+        assembly_menu_item: El consell
