@@ -223,9 +223,6 @@ ca:
             other: "%{count} consells"
       assembly_navigation:
         assembly_menu_item: El consell
-
-
-
   devise:
     mailer:
       invitation_instructions:
@@ -235,9 +232,7 @@ ca:
         hello: Hola %{email},
         ignore: |-
           Si no vols acceptar la invitació, si us plau, ignora aquest correu electrònic. <br/>El teu compte no es crearà fins que no accedeixis a l'enllaç anterior i estableixis el teu àlies i contrasenya.<br/>Si tens algun dubte ens el pots fer arribar al nostre Portal de Suport de Govern Obert i el resoldrem. 
-        invited_you_as_admin: "La Diputació de Girona et convida a ser per una de les persones administradores de la plataforma DECIDIM de/de l'%{application}.\n\nSi reps aquest correu és perquè el teu ajuntament ens han fet arribar el teu contacte.
-        
-        Pots acceptar-ho a través de l'enllaç següent."
+        invited_you_as_admin: "La Diputació de Girona et convida a ser per una de les persones administradores de la plataforma DECIDIM de/de l'%{application}.\n\nSi reps aquest correu és perquè el teu ajuntament ens han fet arribar el teu contacte.\n\nPots acceptar-ho a través de l'enllaç següent."
       invite_admin:
         subject:  Has estat convidat/da a gestionar la plataforma DECIDIM de/de l' %{organization}
       organization_admin_invitation_instructions:
