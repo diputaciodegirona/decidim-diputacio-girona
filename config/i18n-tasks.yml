@@ -442,6 +442,7 @@ ignore_unused:
   - 'devise.mailer.invitation_instructions.invited_you_as_admin'
   - 'devise.mailer.invite_admin.subject'
   - 'devise.mailer.organization_admin_invitation_instructions.subject'
+  
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
