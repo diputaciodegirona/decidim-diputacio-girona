@@ -175,6 +175,7 @@ ignore_unused:
   - 'decidim.assemblies.admin.assemblies_settings.form.title'
   - 'decidim.assemblies.admin.assembly_copies.form.slug_help'
   - 'decidim.assemblies.admin.assembly_imports.form.slug_help'
+  - 'decidim.assemblies.admin.assembly_members'
   - 'decidim.assemblies.content_blocks.highlighted_assemblies.name'
   - 'decidim.assemblies.index.title'
   - 'decidim.assemblies.last_activity.new_assembly'
