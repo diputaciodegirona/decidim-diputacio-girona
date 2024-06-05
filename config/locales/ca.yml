@@ -1,11 +1,12 @@
+---
 ca:
   activemodel:
     attributes:
       assembly:
-        parent_id: Consell principal
         assembly_type: Tipus de consell
         assembly_type_other: Altre tipus de consell
         decidim_assemblies_type_id: Tipus de consell
+        parent_id: Consell principal
   activerecord:
     models:
       decidim/assembly:
@@ -17,7 +18,6 @@ ca:
       decidim/assembly_user_role:
         one: Rol d'administració del consell
         other: Rol d'administradores del consell
-
   decidim:
     admin:
       actions:
@@ -146,7 +146,7 @@ ca:
         assembly_imports:
           form:
             slug_help: 'Els noms curts d''URL s''utilitzen per generar les URL que apunten a aquest consell. Només accepta lletres, números i guions, i ha de començar amb una lletra. Exemple: %{url}'
-        assembly_members:
+        assembly_members: Assembly members
       content_blocks:
         highlighted_assemblies:
           name: Consells destacats
@@ -168,8 +168,8 @@ ca:
     authorization_modals:
       content:
         missing:
-          title: Es requereix autentificació
           explanation: Per dur a terme aquesta acció, has d'introduir el teu DNI i la teva data de naixement.
+          title: Es requereix autentificació
     events:
       assemblies:
         create_assembly_member:
@@ -211,6 +211,25 @@ ca:
         related_assemblies: Consells relacionats
     statistics:
       assemblies_count: Consells
+  devise:
+    mailer:
+      invitation_instructions:
+        accept: Acceptar invitació
+        accept_until: Aquesta invitació caducarà el dia %{due_date}.
+        decline: Declina la invitació
+        hello: Hola %{email},
+        ignore: 'Si no vols acceptar la invitació, si us plau, ignora aquest correu electrònic. <br/>El teu compte no es crearà fins que no accedeixis a l''enllaç anterior i estableixis el teu àlies i contrasenya.<br/>Si tens algun dubte ens el pots fer arribar al nostre Portal de Suport de Govern Obert i el resoldrem. '
+        invited_you_as_admin: |-
+          La Diputació de Girona et convida a ser per una de les persones administradores de la plataforma DECIDIM de/de l'%{application}.
+
+          Si reps aquest correu és perquè el teu ajuntament ens han fet arribar el teu contacte.
+
+          Pots acceptar-ho a través de l'enllaç següent.
+        someone_invited_you_as_admin: Someone invited you as admin
+      invite_admin:
+        subject: Has estat convidat/da a gestionar la plataforma DECIDIM de/de l' %{organization}
+      organization_admin_invitation_instructions:
+        subject: Has estat convidat/da a gestionar la plataforma DECIDIM de/de l' %{organization}
   layouts:
     decidim:
       assemblies:
@@ -223,17 +242,3 @@ ca:
             other: "%{count} consells"
       assembly_navigation:
         assembly_menu_item: El consell
-  devise:
-    mailer:
-      invitation_instructions:
-        accept: Acceptar invitació
-        accept_until: Aquesta invitació caducarà el dia %{due_date}.
-        decline: Declina la invitació
-        hello: Hola %{email},
-        ignore: |-
-          Si no vols acceptar la invitació, si us plau, ignora aquest correu electrònic. <br/>El teu compte no es crearà fins que no accedeixis a l'enllaç anterior i estableixis el teu àlies i contrasenya.<br/>Si tens algun dubte ens el pots fer arribar al nostre Portal de Suport de Govern Obert i el resoldrem. 
-        invited_you_as_admin: "La Diputació de Girona et convida a ser per una de les persones administradores de la plataforma DECIDIM de/de l'%{application}.\n\nSi reps aquest correu és perquè el teu ajuntament ens han fet arribar el teu contacte.\n\nPots acceptar-ho a través de l'enllaç següent."
-      invite_admin:
-        subject:  Has estat convidat/da a gestionar la plataforma DECIDIM de/de l' %{organization}
-      organization_admin_invitation_instructions:
-        subject: Has estat convidat/da a gestionar la plataforma DECIDIM de/de l' %{organization}
