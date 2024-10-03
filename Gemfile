@@ -6,7 +6,7 @@ DECIDIM_VERSION = "0.28.3"
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
-gem 'decidim-consultations', "0.27.9"
+#gem 'decidim-consultations', "0.27.9"
 gem 'decidim-file_authorization_handler', branch: "upgrade/0.28", git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git"
 gem 'decidim-verify_wo_registration', '0.3.0'
 
