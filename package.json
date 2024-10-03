@@ -9,7 +9,7 @@
   },
   "version": "0.1.0",
   "engines": {
-    "node": "16.9.1"
+    "node": ">=18.0"
   },
   "babel": {
     "presets": [
