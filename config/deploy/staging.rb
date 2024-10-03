@@ -3,7 +3,7 @@ set :branch, 'master'
 
 set :git_http_password, " 2GThJ7dJgSNnyQBr"
 
-server 'decidim.proves.local', user: 'operez', port: '22', roles:  %w{app web db}
+server '195.93.170.50', user: 'decidim', port: '22', roles:  %w{app web db}
 set :deploy_to, "/var/www/decidim/ddgi/" # directory for the project in the server, in this case 'var/www/customers'
 
 set :rbenv_type, :user
