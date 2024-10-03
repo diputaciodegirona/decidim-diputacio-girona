@@ -34,7 +34,7 @@ group :development, :test, :staging do
   gem 'byebug', platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
   gem 'faker'
-  gem 'bootsnap'
+#  gem 'bootsnap'
 end
 
 group :development do
