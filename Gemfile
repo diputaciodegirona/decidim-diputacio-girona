@@ -28,7 +28,7 @@ gem "whenever", require: false
 gem "bootsnap", "~> 1.4"
 
 gem "puma", ">= 6.3.1"
-gem "capistrano3-puma", '6.0.0.beta.1'
+gem "capistrano3-puma", '6.0.0.beta.1', require: false
 
 
 group :development, :test, :staging do
@@ -51,7 +51,7 @@ group :development do
   gem "capistrano-rails", require: false
   gem "capistrano-bundler", require: false
   gem "capistrano-rbenv", require: false
-  gem "capistrano3-puma", require: false
+#  gem "capistrano3-puma", require: false
   gem "capistrano3-delayed-job", require: false
   gem "ed25519", require: false
   gem "bcrypt_pbkdf", require: false
