@@ -28,7 +28,7 @@ gem "whenever", require: false
 gem "bootsnap", "~> 1.4"
 
 gem "puma", ">= 6.3.1"
-gem "capistrano3-puma"
+gem "capistrano3-puma", '6.0.0.beta.1'
 
 
 group :development, :test, :staging do
