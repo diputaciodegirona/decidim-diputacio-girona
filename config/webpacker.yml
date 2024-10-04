@@ -69,7 +69,6 @@ test:
 #  <<: *default
   source_path: app/packs
   source_entry_path: entrypoints
-  public_output_path: decidim-packs
   public_root_path: public
   webpack_compile_output: true
   cache_path: tmp/webpacker-cache
