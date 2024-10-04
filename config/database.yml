@@ -1,4 +1,5 @@
-default: &default
+#default: &default
+default:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV['DB_POOL'] %>
@@ -9,12 +10,12 @@ default: &default
   port: <%= ENV['DB_PORT'] %>
 
 development:
-  <<: *default
+#  <<: *default
   min_messages: notice
   database: "decidim_diputacio_girona_development"
 
 test:
-  <<: *default
+#  <<: *default
   pool: <%= ENV.fetch('DB_POOL') { 5 } %>
   host: <%= ENV.fetch('DB_HOST') { "localhost" } %>
   database: "decidim_diputacio_girona_test"
@@ -23,7 +24,7 @@ test:
   port: <%= ENV.fetch('DB_PORT') { 5432 } %>
 
 integration:
-  <<: *default
+#  <<: *default
 
 staging:
   adapter: postgresql
@@ -36,5 +37,5 @@ staging:
   port: <%= ENV['DB_PORT'] %>
 
 production:
-  <<: *default
+#  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
