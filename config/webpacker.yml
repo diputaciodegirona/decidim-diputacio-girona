@@ -1,7 +1,8 @@
 # File written by Decidim generator
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
-default: &default
+#default: &default
+default:
   source_path: app/packs
   source_entry_path: entrypoints
   public_output_path: decidim-packs
@@ -18,7 +19,7 @@ default: &default
   cache_manifest: false
 
 development:
-  <<: *default
+#  <<: *default
   compile: true
   # Compile test packs to decidim decidim-packs folder
 
@@ -51,12 +52,12 @@ development:
         ignored: '**/node_modules/**'
 
 test:
-  <<: *default
+#  <<: *default
   compile: true
   public_output_path: packs-test
 
 production:
-  <<: *default
+#  <<: *default
 
   # Production depends on precompilation of packs prior to booting for performance.
   compile: false
