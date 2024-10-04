@@ -24,7 +24,7 @@ gem "whenever", require: false
 #gem 'puma-daemon','>=0.3.2', require: false
 #gem 'puma', '~> 6.3.1'
 #gem 'uglifier', '>= 4.0.0'
-#gem 'figaro', '>= 1.1.1'
+gem 'figaro', '>= 1.1.1'
 gem "bootsnap", "~> 1.4"
 
 gem "puma", ">= 6.3.1"
