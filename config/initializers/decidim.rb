@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-ActiveRecord.use_yaml_unsafe_load = true
-
 Decidim.configure do |config|
 # The name of the application
   config.application_name = Rails.application.secrets.decidim[:application_name]
