@@ -2,7 +2,24 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 #default: &default
-default:
+#default:
+#  source_path: app/packs
+#  source_entry_path: entrypoints
+#  public_output_path: decidim-packs
+#  public_root_path: public
+#  webpack_compile_output: true
+#  cache_path: tmp/webpacker-cache
+#  extract_css: true
+#
+#  additional_paths:
+#    - node_modules
+#    - app/packs
+#
+#  # Reload manifest.json on all requests so we reload latest compiled packs
+#  cache_manifest: false
+
+development:
+#  <<: *default
   source_path: app/packs
   source_entry_path: entrypoints
   public_output_path: decidim-packs
@@ -17,9 +34,6 @@ default:
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
-
-development:
-#  <<: *default
   compile: true
   # Compile test packs to decidim decidim-packs folder
 
@@ -53,11 +67,39 @@ development:
 
 test:
 #  <<: *default
+  source_path: app/packs
+  source_entry_path: entrypoints
+  public_output_path: decidim-packs
+  public_root_path: public
+  webpack_compile_output: true
+  cache_path: tmp/webpacker-cache
+  extract_css: true
+
+  additional_paths:
+    - node_modules
+    - app/packs
+
+  # Reload manifest.json on all requests so we reload latest compiled packs
+  cache_manifest: false
   compile: true
   public_output_path: packs-test
 
 production:
 #  <<: *default
+  source_path: app/packs
+  source_entry_path: entrypoints
+  public_output_path: decidim-packs
+  public_root_path: public
+  webpack_compile_output: true
+  cache_path: tmp/webpacker-cache
+  extract_css: true
+
+  additional_paths:
+    - node_modules
+    - app/packs
+
+  # Reload manifest.json on all requests so we reload latest compiled packs
+  cache_manifest: false
 
   # Production depends on precompilation of packs prior to booting for performance.
   compile: false
