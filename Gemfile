@@ -12,8 +12,8 @@ gem 'decidim-verify_wo_registration', '0.3.0'
 
 gem "geocoder"
 gem "sassc"
-gem "psych", "< 4"
-#gem "psych", "~> 4"
+#gem "psych", "< 4"
+gem "psych", "~> 4"
 
 # Needed to fix: NameError: uninitialized constant WickedPdf
 gem 'wicked_pdf'
