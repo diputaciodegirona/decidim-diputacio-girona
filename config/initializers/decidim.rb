@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+ActiveRecord.use_yaml_unsafe_load = true
 
 Decidim.configure do |config|
 # The name of the application
