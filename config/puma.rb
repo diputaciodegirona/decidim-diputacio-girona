@@ -1,2 +1,2 @@
-require 'puma/daemon'
+# require 'puma/daemon'
 #daemonize

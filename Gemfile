@@ -2,17 +2,16 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.28-stable" }.freeze
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
-gem 'decidim-consultations', DECIDIM_VERSION
-gem 'decidim-file_authorization_handler', tag: "v0.27.1.3", git: "https://github.com/CodiTramuntana/decidim-file_authorization_handler.git"
-gem 'decidim-verify_wo_registration', '0.1.0'
+# gem 'decidim-consultations', DECIDIM_VERSION
+gem 'decidim-file_authorization_handler', '~> 0.28.2.0'
+gem 'decidim-verify_wo_registration', '~> 0.3.0'
 
 gem "geocoder"
 gem "sassc"
-gem "psych", "< 4"
 
 # Needed to fix: NameError: uninitialized constant WickedPdf
 gem 'wicked_pdf'
@@ -21,10 +20,10 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem "whenever", require: false
 
-gem 'puma-daemon', require: false
-gem 'puma', '~> 5.0'
+# gem 'puma-daemon', require: false
+gem 'puma'
 gem 'uglifier', '>= 4.0.0'
-gem 'figaro', '>= 1.1.1'
+gem "figjam"
 
 group :development, :test, :staging do
   gem 'byebug', platform: :mri

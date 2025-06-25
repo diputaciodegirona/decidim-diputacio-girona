@@ -44,4 +44,4 @@ storage/
 yarn-debug.log*
 /yarn-error.log
 
-/config/master.key
+/config/master.keytailwind.config.js

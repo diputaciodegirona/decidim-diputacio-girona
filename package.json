@@ -11,12 +11,8 @@
   },
   "version": "0.1.0",
   "engines": {
-    "node": "16.9.1"
-  },
-  "babel": {
-    "presets": [
-      "./node_modules/@rails/webpacker/package/babel/preset.js"
-    ]
+    "node": "18.17.1",
+    "npm": ">=9.6.7"
   },
   "browserslist": [
     "extends @decidim/browserslist-config"
@@ -24,6 +20,7 @@
   "devDependencies": {
     "@decidim/dev": "file:packages/dev",
     "@decidim/eslint-config": "file:packages/eslint-config",
+    "@decidim/prettier-config": "file:packages/prettier-config",
     "@decidim/stylelint-config": "file:packages/stylelint-config"
   }
 }

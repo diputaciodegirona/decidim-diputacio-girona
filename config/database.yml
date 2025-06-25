@@ -15,12 +15,12 @@ development:
 
 test:
   <<: *default
-  pool: <%= ENV.fetch('DB_POOL') { 5 } %>
-  host: <%= ENV.fetch('DB_HOST') { "localhost" } %>
+  pool: <%= ENV['DB_POOL'] %>
+  host: <%= ENV['DB_HOST'] %>
   database: "decidim_diputacio_girona_test"
-  username: <%= ENV.fetch('DB_USERNAME') { "" } %>
-  password: <%= ENV.fetch('DB_PASSWORD') { "" } %>
-  port: <%= ENV.fetch('DB_PORT') { 5432 } %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  port: <%= ENV['DB_PORT'] %>
 
 integration:
   <<: *default
