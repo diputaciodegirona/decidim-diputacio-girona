@@ -45,3 +45,5 @@ yarn-debug.log*
 /yarn-error.log
 
 /config/master.keytailwind.config.js
+
+public/sw*
