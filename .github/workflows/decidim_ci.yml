@@ -28,13 +28,13 @@ jobs:
       DB_PASSWORD: postgres
       DB_HOST: localhost
     steps:
-      - uses: actions/checkout@v2.0.0
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
       - uses: ruby/setup-ruby@master
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
