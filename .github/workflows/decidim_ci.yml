@@ -57,6 +57,18 @@ jobs:
           retry_on: error
           command: bundle install --jobs 4 --retry 3
 
+      - name: List Chrome
+        shell: "bash"
+        run: apt list --installed | grep chrome
+
+      - name: Remove Chrome
+        shell: "bash"
+        run: sudo apt remove google-chrome-stable
+
+      - name: Install ImageMagick
+        shell: "bash"
+        run: sudo apt install imagemagick
+
       - name: Generate test_app
         run: |
           RAILS_ENV=test bundle exec rails db:create
