@@ -2,13 +2,13 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.28-stable" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.29-stable" }.freeze
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-initiatives', DECIDIM_VERSION
-# gem 'decidim-consultations', DECIDIM_VERSION
-gem 'decidim-file_authorization_handler', '~> 0.28.2.0'
-gem 'decidim-verify_wo_registration', '~> 0.3.0'
+# # gem 'decidim-consultations', DECIDIM_VERSION
+gem 'decidim-file_authorization_handler', git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', branch: 'master'
+# gem 'decidim-verify_wo_registration', '~> 0.3.0'
 
 gem "geocoder"
 gem "sassc"
@@ -35,8 +35,6 @@ end
 group :development do
   gem 'web-console'
   gem 'listen'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'better_errors', '>= 2.3.0'
   gem 'binding_of_caller'
@@ -50,4 +48,3 @@ group :development do
   gem "ed25519", require: false
   gem "bcrypt_pbkdf", require: false
 end
-
