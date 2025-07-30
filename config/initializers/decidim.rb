@@ -43,7 +43,7 @@ Decidim.configure do |config|
   config.maps = {
     provider: :here,
     api_key: Rails.application.secrets.maps[:here_api_key],
-    static: { url: "https://image.maps.ls.hereapi.com/mia/1.6/mapview" }
+    static: { url: "https://image.maps.hereapi.com/mia/v3/base/mc/overlay" }
   }
 
   # Workaround to enable SVG assets cors
@@ -56,6 +56,10 @@ Decidim.configure do |config|
   config.throttling_period = Rails.application.secrets.decidim[:throttling_period].to_i.minutes
 
   config.follow_http_x_forwarded_host = Rails.application.secrets.decidim[:follow_http_x_forwarded_host].present?
+
+  config.content_security_policies_extra = {
+    "img-src" => %w(https://*.hereapi.com)
+  }
 
 end
 
