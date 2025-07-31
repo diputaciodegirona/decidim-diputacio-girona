@@ -1,8 +1,8 @@
 ---
-en:
+ca:
   decidim:
     verifications:
       id_documents:
         dni: DNI
         nie: NIE
-        passport: Passport
+        passport: Passaport
