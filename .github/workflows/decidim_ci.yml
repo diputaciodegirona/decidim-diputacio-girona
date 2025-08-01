@@ -69,6 +69,9 @@ jobs:
         shell: "bash"
         run: sudo apt install imagemagick
 
+      - name: Copy example config
+        run: cp config/application.yml.example config/application.yml
+
       - name: Generate test_app
         run: |
           RAILS_ENV=test bundle exec rails db:create
