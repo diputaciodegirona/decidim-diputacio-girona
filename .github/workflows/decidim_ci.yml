@@ -70,7 +70,7 @@ jobs:
         run: sudo apt install imagemagick
 
       - name: Copy example config
-        run: cp config/application.yml.example config/application.yml
+        run: cp config/application.example.yml config/application.yml
 
       - name: Generate test_app
         run: |
