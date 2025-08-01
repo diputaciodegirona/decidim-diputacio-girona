@@ -46,4 +46,4 @@ yarn-debug.log*
 
 /config/master.key
 
-public/sw*
+public/sw*.*

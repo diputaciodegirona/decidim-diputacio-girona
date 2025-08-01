@@ -66,7 +66,7 @@ Decidim.configure do |config|
       config.document_types = Rails.application.secrets.dig(:verifications, :document_types).presence || %w(identification_number passport)
     end
   end
-
+  
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
