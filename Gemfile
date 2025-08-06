@@ -1,49 +1,52 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/CodiTramuntana/decidim.git", branch: "release/0.29-stable" }.freeze
+DECIDIM_VERSION = { git: 'https://github.com/CodiTramuntana/decidim.git', branch: 'release/0.29-stable' }.freeze
 
 gem 'decidim', DECIDIM_VERSION
+gem 'decidim-file_authorization_handler',
+    git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', branch: 'master'
 gem 'decidim-initiatives', DECIDIM_VERSION
-gem 'decidim-file_authorization_handler', git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', branch: 'master'
 gem 'decidim-verify_wo_registration', '~> 0.3.0'
 
-gem "geocoder"
-gem "sassc"
+gem 'geocoder'
+gem 'sassc'
 
 # Needed to fix: NameError: uninitialized constant WickedPdf
 gem 'wicked_pdf'
 
-gem 'delayed_job_active_record'
 gem 'daemons'
-gem "whenever", require: false
+gem 'delayed_job_active_record'
+gem 'whenever', require: false
 
-gem 'puma-daemon', '~> 0.5.0', require: false
+gem 'figjam'
 gem 'puma'
+gem 'puma-daemon', '~> 0.5.0', require: false
 gem 'uglifier', '>= 4.0.0'
-gem "figjam"
 
 group :development, :test, :staging do
-  gem 'byebug', platform: :mri
-  gem "decidim-dev", DECIDIM_VERSION
-  gem 'faker'
   gem 'bootsnap'
+  gem 'byebug', platform: :mri
+  gem 'decidim-dev', DECIDIM_VERSION
+  gem 'faker'
 end
 
 group :development do
-  gem 'web-console'
   gem 'listen'
+  gem 'web-console'
 
   gem 'better_errors', '>= 2.3.0'
   gem 'binding_of_caller'
 
+  gem 'bcrypt_pbkdf', require: false
   gem 'capistrano', '~> 3.17'
-  gem "capistrano-rails", require: false
-  gem "capistrano-bundler", require: false
-  gem "capistrano-rbenv", require: false
-  gem "capistrano3-puma", require: false
-  gem "capistrano3-delayed-job", require: false
-  gem "ed25519", require: false
-  gem "bcrypt_pbkdf", require: false
+  gem 'capistrano3-delayed-job', require: false
+  gem 'capistrano3-puma', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'ed25519', require: false
 end
