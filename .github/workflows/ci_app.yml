@@ -1,4 +1,5 @@
-name: "[CI] Decidim"
+name: "[CI] App"
+
 on: [push]
 
 env:
@@ -6,8 +7,7 @@ env:
   NODE_VERSION: 18.17.1
 
 jobs:
-  tests:
-    name: Tests
+  test:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -34,11 +34,21 @@ jobs:
       - uses: ruby/setup-ruby@master
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-      - uses: actions/setup-node@v4
+          bundler-cache: true
+      # Workaround https://github.com/decidim/decidim/issues/12369
+      - uses: nanasess/setup-chromedriver@v2
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      - run: npm install
+          chromedriver-version: 119.0.6045.105
+
+      - name: List Chrome
+        run: apt list --installed | grep chrome
+
+      - name: Remove Chrome
+        run: sudo apt remove google-chrome-stable
+
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 119.0.6045.105
 
       - name: Recover Ruby dependency cache
         uses: actions/cache@v3
@@ -49,6 +59,12 @@ jobs:
             ${{ runner.OS }}-app-rubydeps-${{ env.cache-name }}-
             ${{ runner.OS }}-app-rubydeps-
 
+      - name: Set bundle local config vendor/bundle path
+        run: bundle config set --local path 'vendor/bundle'
+
+      - name: Install ImageMagick
+        run: sudo apt install imagemagick
+
       - name: Install Ruby deps
         uses: nick-invision/retry@v2
         with:
@@ -57,27 +73,12 @@ jobs:
           retry_on: error
           command: bundle install --jobs 4 --retry 3
 
-      - name: List Chrome
-        shell: "bash"
-        run: apt list --installed | grep chrome
-
-      - name: Remove Chrome
-        shell: "bash"
-        run: sudo apt remove google-chrome-stable
-
-      - name: Install ImageMagick
-        shell: "bash"
-        run: sudo apt install imagemagick
-
-      - name: Generate test_app
-        run: |
-          RAILS_ENV=test bundle exec rails db:create
-          RAILS_ENV=test bundle exec rails db:migrate
-
-      - name: Run RSpec
-        uses: nick-invision/retry@v2
+      - uses: actions/setup-node@v4
         with:
-          timeout_minutes: 10
-          max_attempts: 3
-          retry_on: error
-          command: CI=1 RAILS_ENV=test bundle exec rspec --backtrace
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      - run: npm install
+      - run: bundle exec rake db:test:prepare
+        name: Setup database
+      - run: bundle exec rspec
+        name: Run specs
