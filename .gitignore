@@ -49,5 +49,3 @@ yarn-debug.log*
 public/sw*.*
 
 tailwind.config.js
-
-app/views/static/
