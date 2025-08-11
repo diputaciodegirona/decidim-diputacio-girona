@@ -47,3 +47,5 @@ yarn-debug.log*
 /config/master.key
 
 public/sw*.*
+
+tailwind.config.js
