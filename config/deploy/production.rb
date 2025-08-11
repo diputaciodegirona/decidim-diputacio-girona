@@ -1,7 +1,7 @@
 set :stage, 'production'
 set :branch, 'master'
 
-set :git_http_password, "PASSWORD"
+set :git_http_password, ENV['GIT_PASSWORD']
 
 server 'decidim.ddgi.cat', user: 'decidim', port: '22', roles:  %w{app web db}
 set :deploy_to, "/var/www/decidim/ddgi/" # directory for the project in the server, in this case 'var/www/customers'
