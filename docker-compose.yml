@@ -1,0 +1,43 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
+    environment:
+      - PORT=3000
+      - DATABASE_HOST=pg
+      - DATABASE_USERNAME=postgres
+      - RAILS_ENV=development
+    ports:
+      - '3000:3000'
+    links:
+      - pg
+    command: bin/dev
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    environment:
+      - DB_HOST=pg
+      - DB_USERNAME=postgres
+      - RAILS_ENV=development
+    links:
+      - pg
+    command: bin/delayed_job start &
+  pg:
+    image: postgres
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+volumes:
+  node_modules: {}
+  bundle: {}
+  pg-data: {}

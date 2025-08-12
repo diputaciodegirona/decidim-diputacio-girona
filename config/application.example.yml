@@ -4,8 +4,15 @@ default: &default
   DB_POOL: <%= ENV.fetch("RAILS_MAX_THREADS") { "5" } %>
   DB_HOST: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
   DB_DATABASE: "database name"
-  DB_USERNAME: "database username"
-  DB_PASSWORD: "database password"
+
+  # Running Rails in local uses:
+  # DB_USERNAME: "database username"
+  # DB_PASSWORD: "database password"
+
+  # Docker Compose example uses:
+  # DB_USERNAME: "postgres"
+  # # DB_PASSWORD: "not used by docker"
+
   # Mailer configuration
   MAILER_SMTP_ADDRESS: "smtp email address"
   MAILER_SMTP_DOMAIN: "smtp email domain"
