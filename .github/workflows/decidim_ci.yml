@@ -24,9 +24,20 @@ jobs:
         image: redis:3.2-alpine
         ports: ["6379:6379"]
     env:
+      DB_HOST: localhost
+      DB_PORT: "5432"
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
-      DB_HOST: localhost
+      DB_DATABASE: decidim_test
+      DB_POOL: "5"
+      SECRET_KEY_BASE: dummy_secret_key_base
+      MAILER_SMTP_ADDRESS: "smtp.example.com"
+      MAILER_SMTP_DOMAIN: "example.com"
+      MAILER_SMTP_PORT: "587"
+      MAILER_SMTP_USER_NAME: "user"
+      MAILER_SMTP_PASSWORD: "password"
+      GEOCODER_LOOKUP_APP_ID: "dummy_app_id"
+      GEOCODER_LOOKUP_APP_CODE: "dummy_app_code"
     steps:
       - uses: actions/checkout@v4
         with:
