@@ -69,8 +69,8 @@ jobs:
         shell: "bash"
         run: sudo apt install imagemagick
 
-      - name: Copy example config
-        run: cp config/application.example.yml config/application.yml
+#      - name: Copy example config
+#        run: cp config/application.example.yml config/application.yml
 
       - name: Generate test_app
         run: |
