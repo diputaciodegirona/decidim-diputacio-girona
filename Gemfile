@@ -21,7 +21,7 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'whenever', require: false
 
-gem 'figjam', '2.0.0'
+gem 'figjam'
 gem 'puma'
 gem 'puma-daemon', '~> 0.5.0', require: false
 gem 'uglifier', '>= 4.0.0'
