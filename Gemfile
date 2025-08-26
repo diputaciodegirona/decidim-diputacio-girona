@@ -8,7 +8,8 @@ DECIDIM_VERSION = { git: 'https://github.com/CodiTramuntana/decidim.git', branch
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-file_authorization_handler',
-    git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', branch: 'master'
+    git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git',
+    tag: 'v0.29.2'
 gem 'decidim-initiatives', DECIDIM_VERSION
 gem 'decidim-verify_wo_registration', '~> 0.3.0'
 
