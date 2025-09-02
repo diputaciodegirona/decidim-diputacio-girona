@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/CodiTramuntana/decidim-file_authorization_handler.git
-  revision: ff14fb7f25798b9cfb213834a89bf946698133d0
-  branch: upgrade_0.30
+  revision: ec127e3aa8f25d730334793ac3a915d7af54f559
   specs:
     decidim-file_authorization_handler (0.30.1.0)
       decidim (~> 0.30.1)
