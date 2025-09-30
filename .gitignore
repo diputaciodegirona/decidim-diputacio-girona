@@ -49,3 +49,5 @@ yarn-debug.log*
 public/sw*.*
 
 tailwind.config.js
+
+docker/development.env

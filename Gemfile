@@ -21,7 +21,7 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'whenever', require: false
 
-gem 'figjam', '2.0.0'
+gem 'figjam', '~> 2.0.1'
 gem 'puma'
 gem 'puma-daemon', '~> 0.5.0', require: false
 gem 'uglifier', '>= 4.0.0'
@@ -34,12 +34,6 @@ group :development, :test, :staging do
 end
 
 group :development do
-  gem 'listen'
-  gem 'web-console'
-
-  gem 'better_errors', '>= 2.3.0'
-  gem 'binding_of_caller'
-
   gem 'bcrypt_pbkdf', require: false
   gem 'capistrano', '~> 3.17'
   gem 'capistrano3-delayed-job', require: false

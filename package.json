@@ -6,13 +6,10 @@
     "@decidim/core": "file:packages/core",
     "@decidim/webpacker": "file:packages/webpacker",
     "graphql-ws": "^5.11.2",
-    "n": "^9.0.1"
+    "postcss-import": "^16.1.0",
+    "postcss-loader": "^8.1.1"
   },
   "version": "0.1.0",
-  "engines": {
-    "node": "18.17.1",
-    "npm": ">=9.6.7"
-  },
   "browserslist": [
     "extends @decidim/browserslist-config"
   ],
@@ -25,5 +22,9 @@
     "esbuild-loader": "^4.3.0",
     "i18n-unused": "^0.16.0",
     "webpack-dev-server": "^4.13.1"
+  },
+  "engines": {
+    "node": "18.17.1",
+    "npm": ">=9.6.7"
   }
 }

@@ -4,14 +4,14 @@ services:
     container_name: decidim_ddgi_web
     network_mode: host
     restart: unless-stopped
+    env_file:
+      - docker/development.env
     volumes:
-      - shared/storage:/var/www/decidim-ddgi/storage
-      - shared/log:/var/www/decidim-ddgi/log
+      - ./storage:/var/www/decidim-ddgi/storage
+      - ./log:/var/www/decidim-ddgi/log
     environment:
       - PORT=3000
       - RAILS_ENV=production
-    env_file:
-      - decidim-ddgi.prod.env
     ports:
       # Puma listens to this port
       - '3000:3000'
@@ -24,10 +24,10 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - shared/storage:/var/www/decidim-ddgi/storage
-      - shared/log:/var/www/decidim-ddgi/log
+      - ./storage:/var/www/decidim-ddgi/storage
+      - ./log:/var/www/decidim-ddgi/log
     environment:
       - RAILS_ENV=production
     env_file:
-      - decidim-ddgi.prod.env
+      - docker/development.env
     command: bin/delayed_job start &

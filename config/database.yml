@@ -10,7 +10,7 @@ default: &default
 development:
   <<: *default
   min_messages: notice
-  database: <%= ENV.fetch("DATABASE_NAME") { "decidim_diputacio_girona_development" } %>
+  database: <%= ENV.fetch("DB_DATABASE") { "decidim_diputacio_girona_development" } %>
 
 test:
   <<: *default
@@ -24,4 +24,5 @@ staging:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: <%= ENV.fetch("DB_DATABASE") { "decidim_diputacio_girona_development" } %>
+  # url: <%= ENV['DATABASE_URL'] %>

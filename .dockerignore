@@ -1,0 +1,39 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore Node modules
+/node_modules
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore bundler related files
+.bundle/
+
+# Ignore public
+public/cache
+public/decidim-packs
+public/packs-test
+
+# Ignore env variables
+.env
+.env.*
+!.env.example
+
+# Ignore other files
+.vscode/
+.DS_Store
+**/*.rspec-failures
+.git/
+storage/
+.github/
+docs/
+spec/
+vendor/
+docker/development.env
