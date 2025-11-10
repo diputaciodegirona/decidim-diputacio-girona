@@ -22,7 +22,7 @@ gem 'delayed_job_active_record'
 gem 'whenever', require: false
 
 gem 'figjam', '~> 2.0.1'
-gem 'puma'
+gem 'puma', '~> 6.6.1'
 gem 'puma-daemon', '~> 0.5.0', require: false
 gem 'uglifier', '>= 4.0.0'
 
