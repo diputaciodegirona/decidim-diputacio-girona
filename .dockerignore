@@ -5,6 +5,7 @@
 /node_modules
 
 # Ignore all logfiles and tempfiles.
+config/application.yml
 /log/*
 /tmp/*
 !/log/.keep

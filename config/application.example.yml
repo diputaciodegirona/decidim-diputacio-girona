@@ -6,7 +6,7 @@ default: &default
   DB_DATABASE: "database name"
 
   # Running Rails in local uses:
-  # DB_USERNAME: "database username"
+  DB_USERNAME: "database username"
   # DB_PASSWORD: "database password"
 
   # Docker Compose example uses:

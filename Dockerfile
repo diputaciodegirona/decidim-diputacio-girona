@@ -1,6 +1,4 @@
-FROM ruby:3.3.4-bullseye
-
-# RUN cat /etc/os-release && sleep 10
+FROM ruby:3.3-slim-bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -12,9 +10,7 @@ ENV TZ=Europe/Madrid
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Install system dependencies
-RUN apt --allow-releaseinfo-change update
-RUN apt update -qq
-RUN apt install -y \
+RUN apt -qq update && apt install -y \
     build-essential \
     graphviz \
     imagemagick \
@@ -23,24 +19,34 @@ RUN apt install -y \
     gettext-base \
     tzdata \
     vim \
-    locales
-RUN apt install -y p7zip
-RUN apt install -y ca-certificates
+    locales \
+    p7zip \
+    ca-certificates \
+    curl \
+    python3 \
+    git \
+    icu-devtools \
+    zlib1g-dev \
+    # required by wkhtmltopdf
+    xfonts-base \
+    xfonts-75dpi \
+    fontconfig \
+    libjpeg62-turbo \
+    libxrender1 \
+    xfonts-encodings \
+    xfonts-utils \
+    libx11-6 \
+    libxext6 \
+    && apt install -y --no-install-recommends libjemalloc2
 
-RUN apt install -y --no-install-recommends libjemalloc2
 ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
 ENV MALLOC_CONF='dirty_decay_ms:1000,narenas:2,background_thread:true'
 
-# Locales configuration
-# RUN locale-gen en_US.UTF-8
-# ENV LANG=en_US.UTF-8
-# ENV LANGUAGE=en_US:en
-# ENV LC_ALL=en_US.UTF-8
-
 # Install wkhtmltopdf
-RUN apt install -y xfonts-base xfonts-75dpi
-RUN curl "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb" -L -o "wkhtmltox_0.12.6.1-2.bullseye_amd64.deb"
-RUN dpkg -i wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
+RUN curl -L -o wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb \
+    && dpkg -i wkhtmltox.deb || true \
+    && apt install -f -y \
+    && rm wkhtmltox.deb
 
 # Define volumes
 VOLUME $APP_HOME/storage
@@ -101,8 +107,6 @@ WORKDIR $APP_HOME
 ##############################
 RUN rm -Rf node_modules/ && npm cache clean --force
 
-# COPY ./package.json $APP_HOME/package.json
-# COPY ./packages/ $APP_HOME/packages/
 RUN npm install
 
 # ##############################
@@ -112,6 +116,7 @@ RUN npm install
 # ADD Gemfile Gemfile
 # ADD Gemfile.lock Gemfile.lock
 
+RUN cp config/application.example.yml config/application.yml
 RUN bundle config --without development test \
  && bundle config set deployment 'true' \
  && bundle install --jobs=10
@@ -123,8 +128,7 @@ ENV DISABLE_SPRING=1
 RUN RAILS_ENV=production SECRET_KEY_BASE=WHATEVER DOCKER=1 bundle exec rake shakapacker:clobber shakapacker:compile
 
 # make sure nothing gets leacked
-RUN rm config/application.yml
-RUN touch config/application.yml
+RUN rm config/application.yml && touch config/application.yml
 
 # Add a tmp folder for pids
 RUN mkdir -p tmp/pids
@@ -133,7 +137,12 @@ RUN mkdir -p tmp/pids
 # Clean up APT and bundler when done.
 ##############################
 USER root
-RUN apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*.
+# clean caches
+RUN apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# remove compilation tools
+RUN apt -y remove build-essential libpq-dev libicu-dev curl python3 git icu-devtools zlib1g-dev
+
 USER www-data
 
 ##############################
