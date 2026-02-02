@@ -2,7 +2,7 @@ services:
   web:
     image: decidim-ddgi_app:latest
     container_name: decidim_ddgi_web
-    network_mode: host
+    network_mode: bridge
     restart: unless-stopped
     volumes:
       - shared/storage:/var/www/decidim-ddgi/storage
@@ -14,14 +14,16 @@ services:
       - decidim-ddgi.prod.env
     ports:
       # Puma listens to this port
-      - '3000:3000'
+      - '${WEB_PORT:-3000}:3000'
       # Puma connects to PostgreSQL through this port
-      - '5432:5432'
+      - '${POSTGRES_PORT:-5432}:${DB_PORT:-5432}'
+      # SMTP through this port
+      - '${SMTP_PORT:-587}:${MAILER_SMTP_PORT:-587}'
     command: bundle exec puma -C config/puma.rb
   worker:
     image: decidim-ddgi_app:latest
     container_name: decidim_ddgi_worker
-    network_mode: host
+    network_mode: bridge
     restart: unless-stopped
     volumes:
       - shared/storage:/var/www/decidim-ddgi/storage
@@ -30,4 +32,9 @@ services:
       - RAILS_ENV=production
     env_file:
       - decidim-ddgi.prod.env
+    ports:
+      # Connect to PostgreSQL through this port
+      - '${POSTGRES_PORT:-5432}:${DB_PORT:-5432}'
+      # SMTP through this port
+      - '${SMTP_PORT:-587}:${MAILER_SMTP_PORT:-587}'
     command: bin/delayed_job start &
