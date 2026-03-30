@@ -50,4 +50,6 @@ public/sw*.*
 
 tailwind.config.js
 
+.env
+decidim-ddgi.*.env
 docker/development.env

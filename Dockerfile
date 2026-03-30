@@ -103,7 +103,6 @@ RUN chown -R www-data:www-data /var/www/.npm
 ##############################
 ADD . $APP_HOME
 RUN rm -Rf tmp/*
-#RUN rm -Rf docker/*
 RUN chown -R www-data:www-data $APP_HOME
 
 USER www-data
@@ -125,6 +124,8 @@ RUN npm install
 # ADD Gemfile.lock Gemfile.lock
 
 RUN cp config/application.example.yml config/application.yml
+RUN cp config/puma.example.rb config/puma.rb
+# RUN bundle config set frozen false
 RUN bundle config --without development test \
  && bundle config set deployment 'true' \
  && bundle install --jobs=10

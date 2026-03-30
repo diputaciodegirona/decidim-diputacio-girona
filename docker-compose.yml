@@ -1,12 +1,13 @@
 services:
   web:
-    image: decidim-ddgi_app:latest
+    image: decidim-ddgi_app:${V_IMATGE_DOCKER}
     container_name: decidim_ddgi_web
     network_mode: bridge
     restart: unless-stopped
     volumes:
-      - shared/storage:/var/www/decidim-ddgi/storage
-      - shared/log:/var/www/decidim-ddgi/log
+      - /var/www/decidim-ddgi/shared/storage:/var/www/decidim-ddgi/storage
+      - /var/www/decidim-ddgi/shared/log:/var/www/decidim-ddgi/log
+      - /var/www/decidim-ddgi/shared/public:/var/www/decidim-ddgi/tmp/public
     environment:
       - PORT=3000
       - RAILS_ENV=production
@@ -15,26 +16,17 @@ services:
     ports:
       # Puma listens to this port
       - '${WEB_PORT:-3000}:3000'
-      # Puma connects to PostgreSQL through this port
-      - '${POSTGRES_PORT:-5432}:${DB_PORT:-5432}'
-      # SMTP through this port
-      - '${SMTP_PORT:-587}:${MAILER_SMTP_PORT:-587}'
-    command: bundle exec puma -C config/puma.rb
+    command: /bin/sh -c "mkdir -p tmp/public && cp -Rn public/* tmp/public/ && chown -R 1001:1001 tmp/public/* && bundle exec puma -C config/puma.rb"
   worker:
-    image: decidim-ddgi_app:latest
+    image: decidim-ddgi_app:${V_IMATGE_DOCKER}
     container_name: decidim_ddgi_worker
     network_mode: bridge
     restart: unless-stopped
     volumes:
-      - shared/storage:/var/www/decidim-ddgi/storage
-      - shared/log:/var/www/decidim-ddgi/log
+      - /var/www/decidim-ddgi/shared/storage:/var/www/decidim-ddgi/storage
+      - /var/www/decidim-ddgi/shared/log:/var/www/decidim-ddgi/log
     environment:
       - RAILS_ENV=production
     env_file:
       - decidim-ddgi.prod.env
-    ports:
-      # Connect to PostgreSQL through this port
-      - '${POSTGRES_PORT:-5432}:${DB_PORT:-5432}'
-      # SMTP through this port
-      - '${SMTP_PORT:-587}:${MAILER_SMTP_PORT:-587}'
-    command: bin/delayed_job start &
+    command: bundle exec rake jobs:work

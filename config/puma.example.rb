@@ -1,4 +1,4 @@
-workers Integer(ENV['WEB_CONCURRENCY'] || 1)
+workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 threads_count = Integer(ENV['MAX_THREADS'] || 5)
 threads threads_count, threads_count
 stdout_redirect 'log/puma.log', 'log/puma_error.log', true
@@ -9,12 +9,9 @@ preload_app!
 
 activate_control_app
 
-rackup      DefaultRackup
-port        ENV['PORT']     || 3010
+port        ENV['PORT']     || 3000
 env= ENV['RACK_ENV'] || ENV['RAILS_ENV'] || :staging || :production
 environment env
-env = env.to_sym
-daemonize [:production, :staging, :integration].include?(env)
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+

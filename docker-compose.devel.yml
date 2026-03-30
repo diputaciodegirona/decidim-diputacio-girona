@@ -15,8 +15,6 @@ services:
     ports:
       # Puma listens to this port
       - '3000:3000'
-      # Puma connects to PostgreSQL through this port
-      - '5432:5432'
     command: bundle exec puma -C config/puma.rb
   worker:
     image: decidim-ddgi_app:latest
