@@ -16,7 +16,7 @@ services:
     ports:
       # Puma listens to this port
       - '${WEB_PORT:-3000}:3000'
-    command: /bin/sh -c "mkdir -p tmp/public && cp -Rn public/* tmp/public/ && chown -R 1001:1001 tmp/public/* && bundle exec puma -C config/puma.rb"
+    command: /bin/sh -c "docker/run-web_service.sh"
   worker:
     image: decidim-ddgi_app:${V_IMATGE_DOCKER}
     container_name: decidim_ddgi_worker
@@ -29,4 +29,4 @@ services:
       - RAILS_ENV=production
     env_file:
       - decidim-ddgi.prod.env
-    command: bundle exec rake jobs:work
+    command: /bin/sh -c "docker/run-worker_service.sh"
