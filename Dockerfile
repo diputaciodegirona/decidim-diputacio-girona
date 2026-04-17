@@ -1,5 +1,5 @@
 ARG OS_VERSION=slim-bookworm
-ARG RUBY_IMAGE_VERSION=3.3
+ARG RUBY_IMAGE_VERSION=3.3.10
 
 FROM ruby:${RUBY_IMAGE_VERSION}-${OS_VERSION}
 
@@ -31,6 +31,7 @@ RUN apt -qq install -y \
     p7zip \
     ca-certificates \
     curl \
+    cron \
     python3 \
     git \
     icu-devtools \
@@ -125,7 +126,6 @@ RUN npm install
 
 RUN cp config/application.example.yml config/application.yml
 RUN cp config/puma.example.rb config/puma.rb
-# RUN bundle config set frozen false
 RUN bundle config --without development test \
  && bundle config set deployment 'true' \
  && bundle install --jobs=10
