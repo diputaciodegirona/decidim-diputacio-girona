@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_08_12_100462) do
+ActiveRecord::Schema[7.0].define(version: 2026_05_07_074858) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -42,6 +42,52 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_12_100462) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "bak_decidim_users", id: false, force: :cascade do |t|
+    t.integer "id"
+    t.string "email"
+    t.string "encrypted_password"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.integer "sign_in_count"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.string "invitation_token"
+    t.datetime "invitation_created_at", precision: nil
+    t.datetime "invitation_sent_at", precision: nil
+    t.datetime "invitation_accepted_at", precision: nil
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.integer "invited_by_id"
+    t.integer "invitations_count"
+    t.integer "decidim_organization_id"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
+    t.string "unconfirmed_email"
+    t.string "name"
+    t.string "locale"
+    t.string "avatar"
+    t.text "delete_reason"
+    t.datetime "deleted_at", precision: nil
+    t.boolean "admin"
+    t.boolean "managed"
+    t.string "roles", array: true
+    t.boolean "email_on_notification"
+    t.string "nickname", limit: 20
+    t.string "personal_url"
+    t.text "about"
+    t.datetime "accepted_tos_version", precision: nil
+    t.datetime "officialized_at", precision: nil
+    t.jsonb "officialized_as"
+    t.string "newsletter_token"
+    t.datetime "newsletter_notifications_at", precision: nil
   end
 
   create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
@@ -482,6 +528,20 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_12_100462) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_decidim_components_on_deleted_at"
     t.index ["participatory_space_id", "participatory_space_type"], name: "index_decidim_components_on_decidim_participatory_space"
+  end
+
+  create_table "decidim_components_20250704", id: false, force: :cascade do |t|
+    t.integer "id"
+    t.string "manifest_name"
+    t.jsonb "name"
+    t.integer "participatory_space_id"
+    t.jsonb "settings"
+    t.integer "weight"
+    t.jsonb "permissions"
+    t.datetime "published_at", precision: nil
+    t.string "participatory_space_type"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "decidim_consultations", force: :cascade do |t|
@@ -1414,7 +1474,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_12_100462) do
     t.index ["privatable_to_type", "privatable_to_id"], name: "space_privatable_to_privatable_id"
   end
 
-  create_table "decidim_private_exports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "decidim_private_exports", force: :cascade do |t|
+    t.uuid "uuid", null: false
     t.string "export_type", null: false
     t.string "attached_to_type"
     t.integer "attached_to_id"
@@ -1425,6 +1486,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_12_100462) do
     t.jsonb "metadata", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uuid"], name: "index_decidim_private_exports_on_uuid", unique: true
   end
 
   create_table "decidim_proposals_collaborative_draft_collaborator_requests", force: :cascade do |t|
