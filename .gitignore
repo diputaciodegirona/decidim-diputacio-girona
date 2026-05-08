@@ -45,3 +45,11 @@ yarn-debug.log*
 /yarn-error.log
 
 /config/master.key
+
+public/sw*.*
+
+tailwind.config.js
+
+.env
+decidim-ddgi.*.env
+docker/development.env

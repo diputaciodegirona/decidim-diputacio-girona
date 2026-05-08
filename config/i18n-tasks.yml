@@ -431,6 +431,7 @@ ignore_unused:
   - 'decidim.metrics.assemblies.title'
   - 'decidim.participatory_processes.show.related_assemblies'
   - 'decidim.statistics.assemblies_count'
+  - 'decidim.verifications.*'
   - 'layouts.decidim.assemblies.index.children'
   - 'layouts.decidim.assemblies.index.promoted_assemblies'
   - 'layouts.decidim.assemblies.order_by_assemblies.assemblies'
@@ -443,7 +444,7 @@ ignore_unused:
   - 'devise.mailer.invitation_instructions.invited_you_as_admin'
   - 'devise.mailer.invite_admin.subject'
   - 'devise.mailer.organization_admin_invitation_instructions.subject'
-  
+
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'

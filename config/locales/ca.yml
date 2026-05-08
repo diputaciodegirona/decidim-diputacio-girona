@@ -211,6 +211,11 @@ ca:
         related_assemblies: Consells relacionats
     statistics:
       assemblies_count: Consells
+    verifications:
+      id_documents:
+        dni: DNI
+        nie: NIE
+        passport: Passaport
   devise:
     mailer:
       invitation_instructions:

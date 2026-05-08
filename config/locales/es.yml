@@ -211,6 +211,11 @@ es:
         related_assemblies: Consejos relacionados
     statistics:
       assemblies_count: Consejos
+    verifications:
+      id_documents:
+        dni: DNI
+        nie: NIE
+        passport: Pasaporte
   devise:
     mailer:
       invitation_instructions:

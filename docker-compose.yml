@@ -1,0 +1,32 @@
+services:
+  web:
+    image: decidim-ddgi_app:${V_IMATGE_DOCKER}
+    container_name: decidim_ddgi_web
+    network_mode: bridge
+    restart: unless-stopped
+    volumes:
+      - /var/www/decidim-ddgi/shared/storage:/var/www/decidim-ddgi/storage
+      - /var/www/decidim-ddgi/shared/log:/var/www/decidim-ddgi/log
+      - /var/www/decidim-ddgi/shared/public:/var/www/decidim-ddgi/tmp/public
+    environment:
+      - PORT=3000
+      - RAILS_ENV=production
+    env_file:
+      - decidim-ddgi.prod.env
+    ports:
+      # Puma listens to this port
+      - '${WEB_PORT:-3000}:3000'
+    command: /bin/sh -c "docker/run-web_service.sh"
+  worker:
+    image: decidim-ddgi_app:${V_IMATGE_DOCKER}
+    container_name: decidim_ddgi_worker
+    network_mode: bridge
+    restart: unless-stopped
+    volumes:
+      - /var/www/decidim-ddgi/shared/storage:/var/www/decidim-ddgi/storage
+      - /var/www/decidim-ddgi/shared/log:/var/www/decidim-ddgi/log
+    environment:
+      - RAILS_ENV=production
+    env_file:
+      - decidim-ddgi.prod.env
+    command: /bin/sh -c "docker/run-worker_service.sh"

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Decidim.configure do |config|
-# The name of the application
+  # The name of the application
   config.application_name = Rails.application.secrets.decidim[:application_name]
 
   # The email that will be used as sender in all emails from Decidim
@@ -14,7 +14,7 @@ Decidim.configure do |config|
   # of languages will be equal or a subset of the list in this file.
   # config.available_locales = Rails.application.secrets.decidim[:available_locales].presence || [:en]
   # Or block set it up manually and prevent ENV manipulation:
-  config.available_locales = %w(ca en es)
+  config.available_locales = %w[ca en es]
 
   # Sets the default locale for new organizations. When creating a new
   # organization from the System area, system admins will be able to overwrite
@@ -36,14 +36,18 @@ Decidim.configure do |config|
   #
   config.enable_html_header_snippets = Rails.application.secrets.decidim[:enable_html_header_snippets].present?
 
+  config.force_ssl= Decidim::Env.new("DECIDIM_FORCE_SSL", "auto").default_or_present_if_exists.to_s
+
   # Allow organizations admins to track newsletter links.
-  config.track_newsletter_links = Rails.application.secrets.decidim[:track_newsletter_links].present? unless Rails.application.secrets.decidim[:track_newsletter_links] == "auto"
+  unless Rails.application.secrets.decidim[:track_newsletter_links] == 'auto'
+    config.track_newsletter_links = Rails.application.secrets.decidim[:track_newsletter_links].present?
+  end
 
   # Map and Geocoder configuration
   config.maps = {
     provider: :here,
     api_key: Rails.application.secrets.maps[:here_api_key],
-    static: { url: "https://image.maps.ls.hereapi.com/mia/1.6/mapview" }
+    static: { url: 'https://image.maps.hereapi.com/mia/v3/base/mc/overlay' }
   }
 
   # Workaround to enable SVG assets cors
@@ -57,10 +61,21 @@ Decidim.configure do |config|
 
   config.follow_http_x_forwarded_host = Rails.application.secrets.decidim[:follow_http_x_forwarded_host].present?
 
+  config.content_security_policies_extra = {
+    'img-src' => %w[https://*.hereapi.com]
+  }
+
+  if Decidim.module_installed? :verifications
+    Decidim::Verifications.configure do |config|
+      config.document_types = Rails.application.secrets.dig(:verifications,
+                                                            :document_types).presence || %w[identification_number
+                                                                                            passport]
+    end
+  end
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
 Rails.application.config.i18n.default_locale = Decidim.default_locale
 
 # Inform Decidim about the assets folder
-Decidim.register_assets_path File.expand_path("app/packs", Rails.application.root)
+Decidim.register_assets_path File.expand_path('app/packs', Rails.application.root)

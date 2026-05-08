@@ -1,0 +1,31 @@
+services:
+  web:
+    image: decidim-ddgi_app:latest
+    container_name: decidim_ddgi_web
+    network_mode: host
+    restart: unless-stopped
+    env_file:
+      - docker/development.env
+    volumes:
+      - ./storage:/var/www/decidim-ddgi/storage
+      - ./log:/var/www/decidim-ddgi/log
+    environment:
+      - PORT=3000
+      - RAILS_ENV=production
+    ports:
+      # Puma listens to this port
+      - '3000:3000'
+    command: bundle exec puma -C config/puma.rb
+  worker:
+    image: decidim-ddgi_app:latest
+    container_name: decidim_ddgi_worker
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./storage:/var/www/decidim-ddgi/storage
+      - ./log:/var/www/decidim-ddgi/log
+    environment:
+      - RAILS_ENV=production
+    env_file:
+      - docker/development.env
+    command: bin/delayed_job start &

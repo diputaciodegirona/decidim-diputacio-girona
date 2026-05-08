@@ -1,26 +1,20 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV['DB_POOL'] %>
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  port: <%= ENV['DB_PORT'] %>
+  pool: <%= ENV.fetch("DB_POOL") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("DB_USERNAME") { "" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "" } %>
+  port: <%= ENV.fetch("DB_PORT") { "5432" } %>
 
 development:
   <<: *default
   min_messages: notice
-  database: "decidim_diputacio_girona_development"
+  database: <%= ENV.fetch("DB_DATABASE") { "decidim_diputacio_girona_development" } %>
 
 test:
   <<: *default
-  pool: <%= ENV.fetch('DB_POOL') { 5 } %>
-  host: <%= ENV.fetch('DB_HOST') { "localhost" } %>
-  database: "decidim_diputacio_girona_test"
-  username: <%= ENV.fetch('DB_USERNAME') { "" } %>
-  password: <%= ENV.fetch('DB_PASSWORD') { "" } %>
-  port: <%= ENV.fetch('DB_PORT') { 5432 } %>
+  database: <%= ENV.fetch("DATABASE_TEST_NAME") { "decidim_diputacio_girona_test" } %>
 
 integration:
   <<: *default
@@ -30,4 +24,5 @@ staging:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: <%= ENV.fetch("DB_DATABASE") { "decidim_diputacio_girona_development" } %>
+  # url: <%= ENV['DATABASE_URL'] %>

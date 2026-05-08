@@ -4,26 +4,27 @@
   "dependencies": {
     "@decidim/browserslist-config": "file:packages/browserslist-config",
     "@decidim/core": "file:packages/core",
-    "@decidim/elections": "file:packages/elections",
-    "@decidim/webpacker": "file:packages/webpacker"
+    "@decidim/webpacker": "file:packages/webpacker",
+    "graphql-ws": "^5.11.2",
+    "postcss-import": "^16.1.0",
+    "postcss-loader": "^8.1.1"
   },
   "version": "0.1.0",
-  "engines": {
-    "node": "16.9.1"
-  },
-  "babel": {
-    "presets": [
-      "./node_modules/@rails/webpacker/package/babel/preset.js"
-    ]
-  },
   "browserslist": [
     "extends @decidim/browserslist-config"
   ],
   "devDependencies": {
     "@decidim/dev": "file:packages/dev",
     "@decidim/eslint-config": "file:packages/eslint-config",
+    "@decidim/prettier-config": "file:packages/prettier-config",
     "@decidim/stylelint-config": "file:packages/stylelint-config",
+    "esbuild": "^0.25.8",
+    "esbuild-loader": "^4.3.0",
     "i18n-unused": "^0.16.0",
     "webpack-dev-server": "^4.13.1"
+  },
+  "engines": {
+    "node": "18.17.1",
+    "npm": ">=9.6.7"
   }
 }
