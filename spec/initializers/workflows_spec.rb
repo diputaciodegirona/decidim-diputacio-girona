@@ -3,9 +3,9 @@
 require "rails_helper"
 
 RSpec.describe "Workflows initializer" do
-  subject(:manifest) { Decidim::Verifications.find_workflow_manifest(:ephemeral_authorization_handler) }
+  subject(:manifest) { Decidim::Verifications.find_workflow_manifest(:ephemeral_file_authorization_handler) }
 
-  it "registers the ephemeral_authorization_handler workflow" do
+  it "registers the ephemeral_file_authorization_handler workflow" do
     expect(manifest).not_to be_nil
   end
 
@@ -13,8 +13,8 @@ RSpec.describe "Workflows initializer" do
     expect(manifest.ephemeral).to be true
   end
 
-  it "uses FileAuthorizationHandler as the form" do
-    expect(manifest.form).to eq("FileAuthorizationHandler")
+  it "uses EphemeralFileAuthorizationHandler as the form" do
+    expect(manifest.form).to eq("EphemeralFileAuthorizationHandler")
   end
 
   it "expires in 1 month" do

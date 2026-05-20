@@ -165,6 +165,10 @@ es:
         children: Consejos
         private_space: Éste es un consejo privado
         social_networks_title: Compartir este consejo en
+    authorization_handlers:
+      ephemeral_file_authorization_handler:
+        explanation: Verifíquese con los datos del censo para poder participar de forma temporal.
+        name: Verificación efímera con el censo
     authorization_modals:
       content:
         missing:
