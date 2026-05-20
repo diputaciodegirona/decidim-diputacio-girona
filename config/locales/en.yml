@@ -165,6 +165,10 @@ en:
         children: Consells
         private_space: Aquest é sun consell privat
         social_networks_title: Compartir aquest consell a
+    authorization_handlers:
+      ephemeral_file_authorization_handler:
+        explanation: Verify with census data to participate temporarily.
+        name: Ephemeral census verification
     authorization_modals:
       content:
         missing:

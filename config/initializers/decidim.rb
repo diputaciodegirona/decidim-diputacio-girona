@@ -36,7 +36,7 @@ Decidim.configure do |config|
   #
   config.enable_html_header_snippets = Rails.application.secrets.decidim[:enable_html_header_snippets].present?
 
-  config.force_ssl= Decidim::Env.new("DECIDIM_FORCE_SSL", "auto").default_or_present_if_exists.to_s
+  # config.force_ssl= Decidim::Env.new("DECIDIM_FORCE_SSL", "auto").default_or_present_if_exists.to_s
 
   # Allow organizations admins to track newsletter links.
   unless Rails.application.secrets.decidim[:track_newsletter_links] == 'auto'
