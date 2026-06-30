@@ -50,10 +50,18 @@ Decidim.configure do |config|
   end
 
   # Map and Geocoder configuration
+  #config.maps = {
+  #  provider: :here,
+  #  api_key: Rails.application.secrets.maps[:here_api_key],
+  #  static: { url: 'https://image.maps.hereapi.com/mia/v3/base/mc/overlay' }
+  #}
   config.maps = {
     provider: :here,
     api_key: Rails.application.secrets.maps[:here_api_key],
-    static: { url: 'https://image.maps.hereapi.com/mia/v3/base/mc/overlay' }
+    static: false,
+    dynamic: false,
+    autocomplete: false,
+    geocoding: false
   }
 
   # Workaround to enable SVG assets cors
