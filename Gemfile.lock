@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/CodiTramuntana/decidim-file_authorization_handler.git
+  revision: f74a7d715a46def4be4083f2d9e2978b2c38ac8c
+  branch: upgrade_to_v0.31
+  specs:
+    decidim-file_authorization_handler (0.31.5.0)
+      decidim (~> 0.31.5)
+      decidim-admin (~> 0.31.5)
+
+GIT
   remote: https://github.com/CodiTramuntana/decidim.git
   revision: 73c5a36efabb8f1fe8babe4fcdfa96867c73b80a
   branch: release/0.31-stable
@@ -963,6 +972,7 @@ DEPENDENCIES
   daemons
   decidim!
   decidim-dev!
+  decidim-file_authorization_handler!
   decidim-initiatives!
   delayed_job_active_record
   ed25519
