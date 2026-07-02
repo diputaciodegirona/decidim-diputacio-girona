@@ -43,3 +43,7 @@ group :development do
   gem 'capistrano-rbenv', require: false
   gem 'ed25519', require: false
 end
+
+group :development, :test do
+  gem 'letter_opener_web'
+end

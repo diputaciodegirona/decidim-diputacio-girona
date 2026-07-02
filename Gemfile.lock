@@ -353,6 +353,8 @@ GEM
     cgi (0.5.2)
     charlock_holmes (0.7.9)
     chartkick (5.1.5)
+    childprocess (5.1.0)
+      logger (~> 1.5)
     chronic (0.10.2)
     chunky_png (1.4.0)
     cmdparse (3.0.7)
@@ -549,6 +551,17 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.5)
+    launchy (3.1.1)
+      addressable (~> 2.8)
+      childprocess (~> 5.0)
+      logger (~> 1.6)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
+      rexml
     lint_roller (1.1.0)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -979,6 +992,7 @@ DEPENDENCIES
   faker (~> 3.8.0)
   figjam (~> 2.0.1)
   geocoder
+  letter_opener_web
   puma (~> 6.6.1)
   puma-daemon (~> 0.5.0)
   sassc
