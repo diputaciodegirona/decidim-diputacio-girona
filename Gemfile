@@ -9,7 +9,7 @@ DECIDIM_VERSION = { git: 'https://github.com/CodiTramuntana/decidim.git', branch
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-file_authorization_handler', git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', branch: 'upgrade_to_v0.31'
 gem 'decidim-initiatives', DECIDIM_VERSION
-# gem 'decidim-cdtb', '~> 0.5.5'
+gem 'decidim-cdtb', '~> 0.5.5'
 
 gem 'geocoder'
 gem 'sassc'
