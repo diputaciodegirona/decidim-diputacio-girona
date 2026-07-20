@@ -7,7 +7,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = { git: 'https://github.com/CodiTramuntana/decidim.git', branch: 'release/0.31-stable' }.freeze
 
 gem 'decidim', DECIDIM_VERSION
-gem 'decidim-file_authorization_handler', git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', branch: 'upgrade_to_v0.31'
+gem 'decidim-file_authorization_handler', git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', tag: 'v0.31.6.0'
 gem 'decidim-initiatives', DECIDIM_VERSION
 gem 'decidim-cdtb', '~> 0.5.5'
 
