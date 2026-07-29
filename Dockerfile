@@ -80,7 +80,7 @@ RUN gem install bundler:$BUNDLER_VERSION \
 ENV NODE_VERSION=${NODE_VERSION}
 RUN apt update
 RUN apt -y install curl gnupg
-RUN curl -fsSL https://deb.nodesource.com/node_18.x/pool/main/n/nodejs/nodejs_22.14.0-1nodesource1_amd64.deb -o nodejs_22.14.0.deb \
+RUN curl -fsSL  -o nodejs_${NODE_VERSION}.deb https://deb.nodesource.com/node_22.x/pool/main/n/nodejs/nodejs_22.14.0-1nodesource1_amd64.deb \
  && dpkg -i nodejs_${NODE_VERSION}.deb \
  && rm nodejs_${NODE_VERSION}.deb
 RUN npm -v
