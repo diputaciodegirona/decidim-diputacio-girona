@@ -21,10 +21,11 @@
     "esbuild": "^0.25.8",
     "esbuild-loader": "^4.3.0",
     "i18n-unused": "^0.16.0",
+    "shakapacker": "^8.3.0",
     "webpack-dev-server": "^4.13.1"
   },
   "engines": {
-    "node": "18.17.1",
+    "node": "22.14.0",
     "npm": ">=9.6.7"
   }
 }

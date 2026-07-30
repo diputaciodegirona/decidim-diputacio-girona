@@ -4,11 +4,10 @@ source 'https://rubygems.org'
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: 'https://github.com/CodiTramuntana/decidim.git', branch: 'release/0.30-stable' }.freeze
+DECIDIM_VERSION = { git: 'https://github.com/CodiTramuntana/decidim.git', branch: 'release/0.31-stable' }.freeze
 
 gem 'decidim', DECIDIM_VERSION
-gem 'decidim-file_authorization_handler',
-    git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git'
+gem 'decidim-file_authorization_handler', git: 'https://github.com/CodiTramuntana/decidim-file_authorization_handler.git', tag: 'v0.31.6.0'
 gem 'decidim-initiatives', DECIDIM_VERSION
 gem 'decidim-cdtb', '~> 0.5.5'
 
@@ -31,7 +30,7 @@ group :development, :test, :staging do
   gem 'bootsnap'
   gem 'byebug', platform: :mri
   gem 'decidim-dev', DECIDIM_VERSION
-  gem 'faker'
+  gem 'faker', '~> 3.8.0'
 end
 
 group :development do
@@ -43,4 +42,8 @@ group :development do
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
   gem 'ed25519', require: false
+end
+
+group :development, :test do
+  gem 'letter_opener_web'
 end
