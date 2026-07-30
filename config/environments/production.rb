@@ -64,16 +64,27 @@ end
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
-  config.action_mailer.smtp_settings = {
-    :address        => Decidim::Env.new("SMTP_ADDRESS").to_s,
-    :port           => Decidim::Env.new("SMTP_PORT", 587).to_i,
-    :authentication => Decidim::Env.new("SMTP_AUTHENTICATION", "plain").to_s,
-    :user_name      => Decidim::Env.new("SMTP_USERNAME").to_s,
-    :password       => Decidim::Env.new("SMTP_PASSWORD").to_s,
-    :domain         => Decidim::Env.new("SMTP_DOMAIN").to_s,
-    :enable_starttls_auto => Decidim::Env.new("SMTP_STARTTLS_AUTO").to_boolean_string,
-    :openssl_verify_mode => 'none'
-  }
+  smtp_settings = {
+	  address: Decidim::Env.new("SMTP_ADDRESS").to_s,
+	  port: Decidim::Env.new("SMTP_PORT", 587).to_i,
+	  domain: Decidim::Env.new("SMTP_DOMAIN").to_s,
+	  enable_starttls_auto: Decidim::Env.new("SMTP_STARTTLS_AUTO", true).present?,
+	  openssl_verify_mode: "none",
+	  open_timeout: 5,
+	  read_timeout: 5
+	}
+
+	smtp_username = Decidim::Env.new("SMTP_USERNAME").to_s.presence
+	smtp_password = Decidim::Env.new("SMTP_PASSWORD").to_s.presence
+
+	if smtp_username.present? && smtp_password.present?
+	  smtp_settings[:authentication] =
+		Decidim::Env.new("SMTP_AUTHENTICATION", "plain").to_s
+	  smtp_settings[:user_name] = smtp_username
+	  smtp_settings[:password] = smtp_password
+	end
+
+	config.action_mailer.smtp_settings = smtp_settings
 
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
