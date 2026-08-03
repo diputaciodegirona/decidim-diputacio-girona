@@ -53,6 +53,7 @@ class MoveHighlightedContentBannerSettingsToContentBlock < ActiveRecord::Migrati
     settings = title.inject(settings) { |acc, (k, v)| acc.update("title_#{k}" => v) }
 
     short_description = organization.highlighted_content_banner_short_description || {}
+    short_description = {"ca" => short_description} unless short_description.is_a?(Hash)
     settings = short_description.inject(settings) { |acc, (k, v)| acc.update("short_description_#{k}" => v) }
 
     action_button_title = organization.highlighted_content_banner_action_title || {}
