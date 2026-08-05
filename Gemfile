@@ -14,6 +14,9 @@ gem 'decidim-cdtb', '~> 0.5.5'
 gem 'geocoder'
 gem 'sassc'
 
+# Patch CVE Record: CVE-2026-66066
+gem 'activestorage', '>=7.2.3.2'
+
 # Needed to fix: NameError: uninitialized constant WickedPdf
 gem 'wicked_pdf'
 
