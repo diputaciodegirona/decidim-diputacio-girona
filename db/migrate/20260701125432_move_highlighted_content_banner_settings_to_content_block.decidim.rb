@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # This migration comes from decidim (originally 20250527122040)
+# This file has been modified by `decidim upgrade:migrations` task on 2026-10-22 10:16:08 UTC
 class MoveHighlightedContentBannerSettingsToContentBlock < ActiveRecord::Migration[7.0]
   class Organization < ApplicationRecord
     self.table_name = :decidim_organizations
@@ -53,7 +54,6 @@ class MoveHighlightedContentBannerSettingsToContentBlock < ActiveRecord::Migrati
     settings = title.inject(settings) { |acc, (k, v)| acc.update("title_#{k}" => v) }
 
     short_description = organization.highlighted_content_banner_short_description || {}
-    short_description = {"ca" => short_description} unless short_description.is_a?(Hash)
     settings = short_description.inject(settings) { |acc, (k, v)| acc.update("short_description_#{k}" => v) }
 
     action_button_title = organization.highlighted_content_banner_action_title || {}

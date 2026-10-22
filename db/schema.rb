@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_01_125456) do
+ActiveRecord::Schema[7.2].define(version: 2026_10_22_101622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
+
+  create_table "active_hashcash_stamps", force: :cascade do |t|
+    t.string "version", null: false
+    t.integer "bits", null: false
+    t.date "date", null: false
+    t.string "resource", null: false
+    t.string "ext", null: false
+    t.string "rand", null: false
+    t.string "counter", null: false
+    t.string "request_path"
+    t.string "ip_address"
+    t.jsonb "context"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["counter", "rand", "date", "resource", "bits", "version", "ext"], name: "index_active_hashcash_stamps_unique", unique: true
+    t.index ["ip_address", "created_at"], name: "index_active_hashcash_stamps_on_ip_address_and_created_at", where: "(ip_address IS NOT NULL)"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -322,6 +339,119 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_01_125456) do
     t.index ["decidim_user_id", "name"], name: "index_decidim_authorizations_on_decidim_user_id_and_name", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_authorizations_on_decidim_user_id"
     t.index ["unique_id"], name: "index_decidim_authorizations_on_unique_id"
+  end
+
+  create_table "decidim_awesome_authorization_groups", force: :cascade do |t|
+    t.bigint "decidim_organization_id", null: false
+    t.jsonb "name", default: {}, null: false
+    t.jsonb "purpose", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "decidim_awesome_authorization_groups_organization_id"
+  end
+
+  create_table "decidim_awesome_authorization_members", force: :cascade do |t|
+    t.string "email", null: false
+    t.bigint "authorization_group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authorization_group_id", "email"], name: "index_auth_members_group_email", unique: true
+    t.index ["authorization_group_id"], name: "decidim_awesome_authorization_members_authorization_group_id"
+  end
+
+  create_table "decidim_awesome_config", force: :cascade do |t|
+    t.string "var"
+    t.jsonb "value"
+    t.integer "decidim_organization_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["decidim_organization_id"], name: "index_decidim_awesome_on_decidim_organization_id"
+    t.index ["var", "decidim_organization_id"], name: "index_decidim_awesome_organization_var", unique: true
+  end
+
+  create_table "decidim_awesome_config_constraints", force: :cascade do |t|
+    t.jsonb "settings"
+    t.bigint "decidim_awesome_config_id", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["decidim_awesome_config_id"], name: "decidim_awesome_config_constraints_config"
+    t.index ["settings", "decidim_awesome_config_id"], name: "index_decidim_awesome_settings_awesome_config", unique: true
+  end
+
+  create_table "decidim_awesome_editor_images", force: :cascade do |t|
+    t.string "image"
+    t.string "path"
+    t.bigint "decidim_author_id", null: false
+    t.bigint "decidim_organization_id", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["decidim_author_id"], name: "decidim_awesome_editor_images_author"
+    t.index ["decidim_organization_id"], name: "decidim_awesome_editor_images_constraint_organization"
+  end
+
+  create_table "decidim_awesome_follow_up_questionnaire_messages", force: :cascade do |t|
+    t.bigint "follow_up_questionnaire_id", null: false
+    t.bigint "decidim_user_id"
+    t.string "session_token"
+    t.bigint "status_id", null: false
+    t.text "body"
+    t.string "author_type", null: false
+    t.bigint "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_fuqm_on_author"
+    t.index ["decidim_user_id"], name: "index_fuqm_on_decidim_user_id"
+    t.index ["follow_up_questionnaire_id", "decidim_user_id", "session_token", "created_at"], name: "index_fuqm_on_respondent_created_at"
+    t.index ["follow_up_questionnaire_id"], name: "index_fuqm_on_follow_up_questionnaire_id"
+    t.index ["session_token"], name: "index_fuqm_on_session_token"
+    t.index ["status_id"], name: "index_fuqm_on_status_id"
+  end
+
+  create_table "decidim_awesome_follow_up_questionnaire_statuses", force: :cascade do |t|
+    t.bigint "follow_up_questionnaire_id", null: false
+    t.jsonb "name", default: {}, null: false
+    t.string "color", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_up_questionnaire_id"], name: "index_fuqs_on_follow_up_questionnaire_id"
+  end
+
+  create_table "decidim_awesome_follow_up_questionnaires", force: :cascade do |t|
+    t.bigint "decidim_organization_id", null: false
+    t.bigint "decidim_component_id", null: false
+    t.bigint "decidim_questionnaire_id", null: false
+    t.jsonb "name", default: {}, null: false
+    t.integer "position", default: 0, null: false
+    t.string "responder_name_field"
+    t.string "responder_email_field"
+    t.string "reply_to"
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active", "position"], name: "index_decidim_awesome_fuq_on_active_position"
+    t.index ["decidim_component_id"], name: "index_decidim_awesome_fuq_on_component_id"
+    t.index ["decidim_organization_id"], name: "index_decidim_awesome_fuq_on_organization_id"
+    t.index ["decidim_questionnaire_id"], name: "index_decidim_awesome_fuq_on_questionnaire_id", unique: true
+  end
+
+  create_table "decidim_awesome_proposal_extra_fields", force: :cascade do |t|
+    t.bigint "decidim_proposal_id", null: false
+    t.jsonb "vote_weight_totals"
+    t.integer "weight_total", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "private_body"
+    t.string "decidim_proposal_type", null: false
+    t.datetime "private_body_updated_at", precision: nil
+    t.index ["decidim_proposal_id", "decidim_proposal_type"], name: "index_decidim_awesome_proposal_extra_fields_on_decidim_proposal"
+  end
+
+  create_table "decidim_awesome_vote_weights", force: :cascade do |t|
+    t.bigint "proposal_vote_id", null: false
+    t.integer "weight", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["proposal_vote_id"], name: "decidim_awesome_proposals_weights_vote"
   end
 
   create_table "decidim_blogs_posts", id: :serial, force: :cascade do |t|
@@ -2040,6 +2170,16 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_01_125456) do
   add_foreign_key "decidim_authorization_transfers", "decidim_users", column: "source_user_id"
   add_foreign_key "decidim_authorization_transfers", "decidim_users", column: "user_id"
   add_foreign_key "decidim_authorizations", "decidim_users"
+  add_foreign_key "decidim_awesome_authorization_groups", "decidim_organizations"
+  add_foreign_key "decidim_awesome_authorization_members", "decidim_awesome_authorization_groups", column: "authorization_group_id"
+  add_foreign_key "decidim_awesome_config_constraints", "decidim_awesome_config"
+  add_foreign_key "decidim_awesome_editor_images", "decidim_organizations"
+  add_foreign_key "decidim_awesome_editor_images", "decidim_users", column: "decidim_author_id"
+  add_foreign_key "decidim_awesome_follow_up_questionnaire_messages", "decidim_awesome_follow_up_questionnaire_statuses", column: "status_id"
+  add_foreign_key "decidim_awesome_follow_up_questionnaire_messages", "decidim_awesome_follow_up_questionnaires", column: "follow_up_questionnaire_id"
+  add_foreign_key "decidim_awesome_follow_up_questionnaire_statuses", "decidim_awesome_follow_up_questionnaires", column: "follow_up_questionnaire_id"
+  add_foreign_key "decidim_awesome_follow_up_questionnaires", "decidim_components"
+  add_foreign_key "decidim_awesome_follow_up_questionnaires", "decidim_organizations"
   add_foreign_key "decidim_budgets_budgets", "decidim_scopes"
   add_foreign_key "decidim_budgets_orders", "decidim_budgets_budgets"
   add_foreign_key "decidim_budgets_projects", "decidim_budgets_budgets"

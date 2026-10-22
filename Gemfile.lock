@@ -189,6 +189,18 @@ GIT
     decidim-verifications (0.31.6)
       decidim-core (= 0.31.6)
 
+GIT
+  remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
+  revision: 6897018e21f5766102fb0250c2d50c251c6d5111
+  branch: release/0.31-stable
+  specs:
+    decidim-decidim_awesome (0.14.5)
+      active_hashcash (~> 0.4.0)
+      decidim-admin (>= 0.31.0, < 0.32)
+      decidim-core (>= 0.31.0, < 0.32)
+      deface (>= 1.5)
+      sassc (~> 2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -238,6 +250,8 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_hashcash (0.4.0)
+      rails (>= 5.2.0)
     active_link_to (1.0.5)
       actionpack
       addressable
@@ -378,6 +392,12 @@ GEM
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
     declarative-option (0.1.0)
+    deface (1.9.0)
+      actionview (>= 5.2)
+      nokogiri (>= 1.6)
+      polyglot
+      railties (>= 5.2)
+      rainbow (>= 2.1.0)
     delayed_job (4.1.13)
       activesupport (>= 3.0, < 9.0)
     delayed_job_active_record (4.1.11)
@@ -671,6 +691,7 @@ GEM
     pg_search (2.3.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
+    polyglot (0.3.5)
     pp (0.6.4)
       prettyprint
     premailer (1.29.0)
@@ -987,6 +1008,7 @@ DEPENDENCIES
   daemons
   decidim!
   decidim-cdtb (~> 0.5.5)
+  decidim-decidim_awesome!
   decidim-dev!
   decidim-file_authorization_handler (~> 0.31.6.1)
   decidim-initiatives!
