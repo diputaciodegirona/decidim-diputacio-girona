@@ -3,6 +3,9 @@
 # execute migrations
 docker compose -f docker-compose.yml run worker bin/rails db:migrate
 
+# generate Decidim API docs before starting services
+docker compose -f docker-compose.yml run worker bundle exec rake decidim_api:generate_docs
+
 # Clean public folder
 rm -Rf /var/www/decidim-ddgi/shared/public/*
 
