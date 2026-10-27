@@ -10,6 +10,7 @@ gem 'decidim', DECIDIM_VERSION
 gem 'decidim-file_authorization_handler', '~> 0.31.6.1'
 gem 'decidim-initiatives', DECIDIM_VERSION
 gem 'decidim-cdtb', '~> 0.5.5'
+gem 'decidim-decidim_awesome', github: 'decidim-ice/decidim-module-decidim_awesome', branch: 'release/0.31-stable'
 
 gem 'geocoder'
 gem 'sassc'
