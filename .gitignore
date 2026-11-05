@@ -50,3 +50,6 @@ tailwind.config.js
 decidim-ddgi.*.env
 docker/development.env
 /public/sw.js*
+
+## Ignore api docs
+/app/views/static/api
