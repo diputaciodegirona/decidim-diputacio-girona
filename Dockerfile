@@ -1,11 +1,11 @@
 ARG OS_VERSION=slim-bookworm
-ARG RUBY_IMAGE_VERSION=3.3.10
+ARG RUBY_IMAGE_VERSION=3.3.11
 
 FROM ruby:${RUBY_IMAGE_VERSION}-${OS_VERSION}
 
-ARG RUBYGEMS_VERSION=3.3.22
-ARG BUNDLER_VERSION=2.6.5
-ARG NODE_VERSION=22.14.0
+ARG RUBYGEMS_VERSION=3.4.1
+ARG BUNDLER_VERSION=4.0.11
+ARG NODE_VERSION=22.23.4
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -80,7 +80,7 @@ RUN gem install bundler:$BUNDLER_VERSION \
 ENV NODE_VERSION=${NODE_VERSION}
 RUN apt update
 RUN apt -y install curl gnupg
-RUN curl -fsSL  -o nodejs_${NODE_VERSION}.deb https://deb.nodesource.com/node_22.x/pool/main/n/nodejs/nodejs_22.14.0-1nodesource1_amd64.deb \
+RUN curl -fsSL  -o nodejs_${NODE_VERSION}.deb https://deb.nodesource.com/node_22.x/pool/main/n/nodejs/nodejs_22.23.4-1nodesource1_amd64.deb \
  && dpkg -i nodejs_${NODE_VERSION}.deb \
  && rm nodejs_${NODE_VERSION}.deb
 RUN npm -v
