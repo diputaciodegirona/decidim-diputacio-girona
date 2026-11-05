@@ -41,7 +41,7 @@ Decidim.configure do |config|
     if Rails.env.test?
       false
     else
-      Decidim::Env.new("DECIDIM_FORCE_SSL", "auto").default_or_present_if_exists.to_s
+      Decidim::Env.new("DECIDIM_FORCE_SSL", "auto").default_or_present_if_exists
     end
 
   # Allow organizations admins to track newsletter links.
